@@ -49,7 +49,7 @@
                                 @endforeach
                             @endif
                         </div>
-                        {!! Theme::partial('social-share', ['url' => $post->url, 'description' => $post->description]) !!}
+{{--                        {!! Theme::partial('social-share', ['url' => $post->url, 'description' => $post->description]) !!}--}}
                     </div>
                 </div>
             </div>
