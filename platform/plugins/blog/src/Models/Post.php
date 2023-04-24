@@ -7,6 +7,7 @@ use Botble\Base\Traits\EnumCastable;
 use Botble\Base\Enums\BaseStatusEnum;
 use Botble\Revision\RevisionableTrait;
 use Botble\Base\Models\BaseModel;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -51,6 +52,8 @@ class Post extends BaseModel
      * @var array
      */
     protected $dates = [
+        'release_date',
+        'effect_date',
         'created_at',
         'updated_at',
     ];
@@ -72,6 +75,8 @@ class Post extends BaseModel
         'author_id',
         'type_id',
         'author_type',
+        'release_date',
+        'effect_date'
     ];
 
     /**
@@ -105,8 +110,6 @@ class Post extends BaseModel
     {
         return $this->belongsToMany(Category::class, 'post_categories');
     }
-
-
 
     /**
      * @return Category

@@ -72,12 +72,12 @@ class PostForm extends FormAbstract
                     'data-counter' => 500,
                 ],
             ])
-            
+
             ->add('image', 'mediaFile', [
                 'label'      => 'File đính kèm',
                 'label_attr' => ['class' => 'control-label'],
             ])
-            
+
             ->add('description', 'textarea', [
                 'label'      => 'Mô tả',
                 'label_attr' => ['class' => 'control-label'],
@@ -100,6 +100,14 @@ class PostForm extends FormAbstract
                     'placeholder'     => trans('core/base::forms.description_placeholder'),
                     'with-short-code' => true,
                 ],
+            ])
+            ->add('release_date', 'date', [
+                'label'      => 'Ngày phát hành',
+                'label_attr' => ['class' => 'control-label'],
+            ])
+            ->add('effect_date', 'date', [
+                'label'      => 'Ngày hiệu lực',
+                'label_attr' => ['class' => 'control-label'],
             ])
             ->add('status', 'customSelect', [
                 'label'      => trans('core/base::tables.status'),
