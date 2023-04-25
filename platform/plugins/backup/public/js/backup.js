@@ -3,17 +3,16 @@ var __webpack_exports__ = {};
 /*!***************************************************************!*\
   !*** ./platform/plugins/backup/resources/assets/js/backup.js ***!
   \***************************************************************/
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var BackupManagement = /*#__PURE__*/function () {
   function BackupManagement() {
     _classCallCheck(this, BackupManagement);
   }
-
   _createClass(BackupManagement, [{
     key: "init",
     value: function init() {
@@ -45,7 +44,6 @@ var BackupManagement = /*#__PURE__*/function () {
               if (backupTable.find('tbody tr').length <= 1) {
                 backupTable.load(window.location.href + ' #table-backups > *');
               }
-
               backupTable.find('a[data-section="' + deleteURL + '"]').closest('tr').remove();
               Botble.showSuccess(data.message);
             }
@@ -57,19 +55,14 @@ var BackupManagement = /*#__PURE__*/function () {
       });
       $('#restore-backup-button').on('click', function (event) {
         event.preventDefault();
-
         var _self = $(event.currentTarget);
-
         _self.addClass('button-loading');
-
         $.ajax({
           url: _self.data('section'),
           type: 'GET',
           success: function success(data) {
             _self.removeClass('button-loading');
-
             _self.closest('.modal').modal('hide');
-
             if (data.error) {
               Botble.showError(data.message);
             } else {
@@ -79,7 +72,6 @@ var BackupManagement = /*#__PURE__*/function () {
           },
           error: function error(data) {
             _self.removeClass('button-loading');
-
             Botble.handleError(data);
           }
         });
@@ -92,20 +84,15 @@ var BackupManagement = /*#__PURE__*/function () {
       });
       $('#create-backup-modal').on('click', '#create-backup-button', function (event) {
         event.preventDefault();
-
         var _self = $(event.currentTarget);
-
         _self.addClass('button-loading');
-
         var name = $('#name').val();
         var description = $('#description').val();
         var error = false;
-
         if (name === '' || name === null) {
           error = true;
           Botble.showError('Backup name is required!');
         }
-
         if (!error) {
           $.ajax({
             url: $('div[data-route-create]').data('route-create'),
@@ -116,9 +103,7 @@ var BackupManagement = /*#__PURE__*/function () {
             },
             success: function success(data) {
               _self.removeClass('button-loading');
-
               _self.closest('.modal').modal('hide');
-
               if (data.error) {
                 Botble.showError(data.message);
               } else {
@@ -129,7 +114,6 @@ var BackupManagement = /*#__PURE__*/function () {
             },
             error: function error(data) {
               _self.removeClass('button-loading');
-
               Botble.handleError(data);
             }
           });
@@ -139,10 +123,8 @@ var BackupManagement = /*#__PURE__*/function () {
       });
     }
   }]);
-
   return BackupManagement;
 }();
-
 $(document).ready(function () {
   new BackupManagement().init();
 });

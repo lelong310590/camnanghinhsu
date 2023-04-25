@@ -3,17 +3,16 @@ var __webpack_exports__ = {};
 /*!***********************************************************!*\
   !*** ./platform/core/table/resources/assets/js/filter.js ***!
   \***********************************************************/
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var TableFilter = /*#__PURE__*/function () {
   function TableFilter() {
     _classCallCheck(this, TableFilter);
   }
-
   _createClass(TableFilter, [{
     key: "loadData",
     value: function loadData($element) {
@@ -34,14 +33,12 @@ var TableFilter = /*#__PURE__*/function () {
           });
           $element.closest('.filter-item').find('.filter-column-value-wrap').html(res.html);
           var $input = $element.closest('.filter-item').find('.filter-column-value');
-
           if ($input.length && $input.prop('type') === 'text') {
             $input.typeahead({
               source: data
             });
             $input.data('typeahead').source = data;
           }
-
           Botble.initResources();
         },
         error: function error(_error) {
@@ -63,13 +60,9 @@ var TableFilter = /*#__PURE__*/function () {
       });
       $(document).on('click', '.btn-reset-filter-item', function (event) {
         event.preventDefault();
-
         var _self = $(event.currentTarget);
-
         _self.closest('.filter-item').find('.filter-column-key').val('').trigger('change');
-
         _self.closest('.filter-item').find('.filter-column-operator').val('=');
-
         _self.closest('.filter-item').find('.filter-column-value').val('');
       });
       $(document).on('click', '.add-more-filter', function () {
@@ -78,7 +71,6 @@ var TableFilter = /*#__PURE__*/function () {
         $(document).find('.filter-items-wrap').append(html.replace('<script>', '').replace('<\\/script>', ''));
         Botble.initResources();
         var element = $(document).find('.filter-items-wrap .filter-item:last-child').find('.filter-column-key');
-
         if ($(element).val()) {
           that.loadData(element);
         }
@@ -89,10 +81,8 @@ var TableFilter = /*#__PURE__*/function () {
       });
     }
   }]);
-
   return TableFilter;
 }();
-
 $(document).ready(function () {
   new TableFilter().init();
 });

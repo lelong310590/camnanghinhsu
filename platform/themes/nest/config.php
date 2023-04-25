@@ -75,7 +75,7 @@ return [
             $theme->asset()->container('footer')->usePath()->add('waypoints-js', 'js/plugins/waypoints.js');
             $theme->asset()->container('footer')->usePath()
                 ->add('jquery.countdown-js', 'js/plugins/jquery.countdown.min.js');
-            $theme->asset()->container('footer')->usePath()->add('scrollup-js', 'js/plugins/scrollup.js');
+//            $theme->asset()->container('footer')->usePath()->add('scrollup-js', 'js/plugins/scrollup.js');
             $theme->asset()->container('footer')->usePath()
                 ->add('jquery.vticker-js', 'js/plugins/jquery.vticker-min.js');
             $theme->asset()->container('footer')->usePath()

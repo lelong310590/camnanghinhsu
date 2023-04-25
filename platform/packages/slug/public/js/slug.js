@@ -3,17 +3,16 @@ var __webpack_exports__ = {};
 /*!************************************************************!*\
   !*** ./platform/packages/slug/resources/assets/js/slug.js ***!
   \************************************************************/
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var SlugBoxManagement = /*#__PURE__*/function () {
   function SlugBoxManagement() {
     _classCallCheck(this, SlugBoxManagement);
   }
-
   _createClass(SlugBoxManagement, [{
     key: "init",
     value: function init() {
@@ -35,7 +34,6 @@ var SlugBoxManagement = /*#__PURE__*/function () {
         $('#edit-slug-box .save').hide();
         $('#change_slug').show();
       });
-
       var createSlug = function createSlug(name, id, exist) {
         $.ajax({
           url: $('#slug_id').data('url'),
@@ -48,13 +46,11 @@ var SlugBoxManagement = /*#__PURE__*/function () {
           success: function success(data) {
             var $permalink = $('#sample-permalink');
             var $slugId = $('#slug_id');
-
             if (exist) {
               $permalink.find('.permalink').prop('href', $slugId.data('view') + data.replace('/', ''));
             } else {
               $permalink.html('<a class="permalink" target="_blank" href="' + $slugId.data('view') + data.replace('/', '') + '">' + $permalink.html() + '</a>');
             }
-
             $('.page-url-seo p').text($slugId.data('view') + data.replace('/', ''));
             $('#editable-post-name').text(data);
             $('#current-slug').val(data);
@@ -68,16 +64,13 @@ var SlugBoxManagement = /*#__PURE__*/function () {
           }
         });
       };
-
       $(document).on('click', '#edit-slug-box .save', function () {
         var $slugField = $('#new-post-slug');
         var name = $slugField.val();
         var id = $('#slug_id').data('id');
-
         if (id == null) {
           id = 0;
         }
-
         if (name != null && name !== '') {
           createSlug(name, id, false);
         } else {
@@ -87,7 +80,6 @@ var SlugBoxManagement = /*#__PURE__*/function () {
       $(document).on('blur', '#' + $slugBox.data('field-name'), function (e) {
         if ($slugBox.hasClass('hidden')) {
           var value = $(e.currentTarget).val();
-
           if (value !== null && value !== '') {
             createSlug(value, 0, true);
           }
@@ -95,10 +87,8 @@ var SlugBoxManagement = /*#__PURE__*/function () {
       });
     }
   }]);
-
   return SlugBoxManagement;
 }();
-
 $(function () {
   new SlugBoxManagement().init();
 });

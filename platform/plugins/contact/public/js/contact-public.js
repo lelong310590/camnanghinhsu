@@ -7,11 +7,9 @@ $(document).ready(function () {
   var showError = function showError(message) {
     $('.contact-error-message').html(message).show();
   };
-
   var showSuccess = function showSuccess(message) {
     $('.contact-success-message').html(message).show();
   };
-
   var handleError = function handleError(data) {
     if (typeof data.errors !== 'undefined' && data.errors.length) {
       handleValidationError(data.errors);
@@ -35,22 +33,18 @@ $(document).ready(function () {
       }
     }
   };
-
   var handleValidationError = function handleValidationError(errors) {
     var message = '';
     $.each(errors, function (index, item) {
       if (message !== '') {
         message += '<br />';
       }
-
       message += item;
     });
     showError(message);
   };
-
   $(document).on('click', '.contact-form button[type=submit]', function (event) {
     var _this = this;
-
     event.preventDefault();
     event.stopPropagation();
     $(this).addClass('button-loading');
@@ -72,9 +66,7 @@ $(document).ready(function () {
         } else {
           showError(res.message);
         }
-
         $(_this).removeClass('button-loading');
-
         if (typeof refreshRecaptcha !== 'undefined') {
           refreshRecaptcha();
         }
@@ -83,7 +75,6 @@ $(document).ready(function () {
         if (typeof refreshRecaptcha !== 'undefined') {
           refreshRecaptcha();
         }
-
         $(_this).removeClass('button-loading');
         handleError(res);
       }

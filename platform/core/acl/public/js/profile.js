@@ -7,19 +7,18 @@
   \**********************************************************/
 /***/ (() => {
 
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 /**
  * Created on 06/09/2015.
  */
 var CropAvatar = /*#__PURE__*/function () {
   function CropAvatar($element) {
     _classCallCheck(this, CropAvatar);
-
     this.$container = $element;
     this.$avatarView = this.$container.find('.avatar-view');
     this.$triggerButton = this.$avatarView.find('.mt-overlay .btn-outline');
@@ -39,16 +38,13 @@ var CropAvatar = /*#__PURE__*/function () {
       formData: !!window.FormData
     };
   }
-
   _createClass(CropAvatar, [{
     key: "init",
     value: function init() {
       this.support.datauri = this.support.fileList && this.support.fileReader;
-
       if (!this.support.formData) {
         this.initIframe();
       }
-
       this.initTooltip();
       this.initModal();
       this.addListener();
@@ -83,22 +79,19 @@ var CropAvatar = /*#__PURE__*/function () {
     key: "initIframe",
     value: function initIframe() {
       var iframeName = 'avatar-iframe-' + Math.random().toString().replace('.', ''),
-          $iframe = $('<iframe name="' + iframeName + '" style="display:none;"></iframe>'),
-          firstLoad = true,
-          _this = this;
-
+        $iframe = $('<iframe name="' + iframeName + '" style="display:none;"></iframe>'),
+        firstLoad = true,
+        _this = this;
       this.$iframe = $iframe;
       this.$avatarForm.attr('target', iframeName).after($iframe);
       this.$iframe.on('load', function () {
         var data, win, doc;
-
         try {
           win = this.contentWindow;
           doc = this.contentDocument;
           doc = doc ? doc : win.document;
           data = doc ? doc.body.innerText : null;
         } catch (e) {}
-
         if (data) {
           _this.submitDone(data);
         } else if (firstLoad) {
@@ -106,7 +99,6 @@ var CropAvatar = /*#__PURE__*/function () {
         } else {
           _this.submitFail('Image upload failed!');
         }
-
         _this.submitEnd();
       });
     }
@@ -119,20 +111,16 @@ var CropAvatar = /*#__PURE__*/function () {
     key: "change",
     value: function change() {
       var files, file;
-
       if (this.support.datauri) {
         files = this.$avatarInput.prop('files');
-
         if (files.length > 0) {
           file = files[0];
-
           if (CropAvatar.isImageFile(file)) {
             this.read(file);
           }
         }
       } else {
         file = this.$avatarInput.val();
-
         if (CropAvatar.isImageFile(file)) {
           this.syncUpload();
         }
@@ -145,7 +133,6 @@ var CropAvatar = /*#__PURE__*/function () {
         Botble.showError('Please select image!');
         return false;
       }
-
       if (this.support.formData) {
         this.ajaxUpload();
         return false;
@@ -155,13 +142,10 @@ var CropAvatar = /*#__PURE__*/function () {
     key: "read",
     value: function read(file) {
       var _this = this,
-          fileReader = new FileReader();
-
+        fileReader = new FileReader();
       fileReader.readAsDataURL(file);
-
       fileReader.onload = function () {
         _this.url = this.result;
-
         _this.startCropper();
       };
     }
@@ -169,7 +153,6 @@ var CropAvatar = /*#__PURE__*/function () {
     key: "startCropper",
     value: function startCropper() {
       var _this = this;
-
       if (this.active) {
         this.$img.cropper('replace', this.url);
       } else {
@@ -181,7 +164,6 @@ var CropAvatar = /*#__PURE__*/function () {
           preview: this.$avatarPreview.selector,
           done: function done(data) {
             var json = ['{"x":' + data.x, '"y":' + data.y, '"height":' + data.height, '"width":' + data.width + "}"].join();
-
             _this.$avatarData.val(json);
           }
         });
@@ -201,9 +183,8 @@ var CropAvatar = /*#__PURE__*/function () {
     key: "ajaxUpload",
     value: function ajaxUpload() {
       var url = this.$avatarForm.attr('action'),
-          data = new FormData(this.$avatarForm[0]),
-          _this = this;
-
+        data = new FormData(this.$avatarForm[0]),
+        _this = this;
       $.ajax(url, {
         type: 'POST',
         data: data,
@@ -240,11 +221,9 @@ var CropAvatar = /*#__PURE__*/function () {
       try {
         data = $.parseJSON(data);
       } catch (e) {}
-
       if (data && !data.error) {
         if (data.data) {
           this.url = data.data.url;
-
           if (this.support.datauri || this.uploaded) {
             this.uploaded = false;
             this.cropDone();
@@ -253,7 +232,6 @@ var CropAvatar = /*#__PURE__*/function () {
             this.$avatarSrc.val(this.url);
             this.startCropper();
           }
-
           this.$avatarInput.val('');
           Botble.showSuccess(data.message);
         } else {
@@ -286,7 +264,6 @@ var CropAvatar = /*#__PURE__*/function () {
       if (file.type) {
         return /^image\/\w+$/.test(file.type);
       }
-
       return /\.(jpg|jpeg|png|gif)$/.test(file);
     }
   }, {
@@ -295,10 +272,8 @@ var CropAvatar = /*#__PURE__*/function () {
       Botble.handleError(errors);
     }
   }]);
-
   return CropAvatar;
 }();
-
 $(document).ready(function () {
   new CropAvatar($('.crop-avatar')).init();
 });

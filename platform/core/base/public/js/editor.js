@@ -12,12 +12,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 /**
  * Upload file adapter for Botble ckeditor
  */
@@ -28,51 +28,46 @@ var CKEditorUploadAdapter = /*#__PURE__*/function () {
    */
   function CKEditorUploadAdapter(loader, url, t) {
     _classCallCheck(this, CKEditorUploadAdapter);
-
     /**
      * FileLoader instance to use during the upload.
      */
     this.loader = loader;
+
     /**
      * Upload URL.
      *
      * @member {String} #url
      */
-
     this.url = url;
+
     /**
      * Locale translation method.
      */
-
     this.t = t;
   }
+
   /**
    * Starts the upload process.
    *
    * @returns {Promise.<Object>}
    */
-
-
   _createClass(CKEditorUploadAdapter, [{
     key: "upload",
     value: function upload() {
       var _this = this;
-
       return this.loader.file.then(function (file) {
         return new Promise(function (resolve, reject) {
           _this._initRequest();
-
           _this._initListeners(resolve, reject, file);
-
           _this._sendRequest(file);
         });
       });
     }
+
     /**
      * Aborts the upload process.
      *
      */
-
   }, {
     key: "abort",
     value: function abort() {
@@ -80,12 +75,12 @@ var CKEditorUploadAdapter = /*#__PURE__*/function () {
         this.xhr.abort();
       }
     }
+
     /**
      * Initializes the XMLHttpRequest object.
      *
      * @private
      */
-
   }, {
     key: "_initRequest",
     value: function _initRequest() {
@@ -93,6 +88,7 @@ var CKEditorUploadAdapter = /*#__PURE__*/function () {
       xhr.open('POST', this.url, true);
       xhr.responseType = 'json';
     }
+
     /**
      * Initializes XMLHttpRequest listeners.
      *
@@ -101,7 +97,6 @@ var CKEditorUploadAdapter = /*#__PURE__*/function () {
      * @param {Function} reject Callback function to be called when the request cannot be completed.
      * @param {File} file File instance to be uploaded.
      */
-
   }, {
     key: "_initListeners",
     value: function _initListeners(resolve, reject, file) {
@@ -117,18 +112,16 @@ var CKEditorUploadAdapter = /*#__PURE__*/function () {
       });
       xhr.addEventListener('load', function () {
         var response = xhr.response;
-
         if (!response || !response.uploaded) {
           return reject(response && response.error && response.error.message ? response.error.message : genericError);
         }
-
         resolve({
           "default": response.url
         });
-      }); // Upload progress when it's supported.
+      });
 
+      // Upload progress when it's supported.
       /* istanbul ignore else */
-
       if (xhr.upload) {
         xhr.upload.addEventListener('progress', function (evt) {
           if (evt.lengthComputable) {
@@ -138,13 +131,13 @@ var CKEditorUploadAdapter = /*#__PURE__*/function () {
         });
       }
     }
+
     /**
      * Prepares the data and sends the request.
      *
      * @private
      * @param {File} file File instance to be uploaded.
      */
-
   }, {
     key: "_sendRequest",
     value: function _sendRequest(file) {
@@ -152,15 +145,13 @@ var CKEditorUploadAdapter = /*#__PURE__*/function () {
       var data = new FormData();
       data.append('upload', file);
       data.append('_token', $('meta[name="csrf-token"]').attr('content')); // laravel token
-      // Send request.
 
+      // Send request.
       this.xhr.send(data);
     }
   }]);
-
   return CKEditorUploadAdapter;
 }();
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CKEditorUploadAdapter);
 
 /***/ })
@@ -229,37 +220,29 @@ var __webpack_exports__ = {};
   \**********************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_upload_adapter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ckeditor-upload-adapter */ "./platform/core/base/resources/assets/js/ckeditor-upload-adapter.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 var EditorManagement = /*#__PURE__*/function () {
   function EditorManagement() {
     _classCallCheck(this, EditorManagement);
-
     this.CKEDITOR = {};
     this.shortcodes = [];
   }
-
   _createClass(EditorManagement, [{
     key: "initCkEditor",
     value: function initCkEditor(element, extraConfig) {
       var _this = this;
-
       if (this.CKEDITOR[element] || !$('#' + element).is(':visible')) {
         return false;
       }
-
       var editor = document.querySelector('#' + element);
       ClassicEditor.create(editor, _objectSpread({
         fontSize: {
@@ -272,14 +255,12 @@ var EditorManagement = /*#__PURE__*/function () {
           onEdit: function onEdit(shortcode) {
             var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {};
             var description = null;
-
             _this.shortcodes.forEach(function (item) {
               if (item.key === name) {
                 description = item.description;
                 return true;
               }
             });
-
             _this.shortcodeCallback({
               key: name,
               href: route('short-codes.ajax-get-admin-config', name),
@@ -363,29 +344,30 @@ var EditorManagement = /*#__PURE__*/function () {
       }, extraConfig)).then(function (editor) {
         editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
           return new _ckeditor_upload_adapter__WEBPACK_IMPORTED_MODULE_0__["default"](loader, RV_MEDIA_URL.media_upload_from_editor, editor.t);
-        }; // create function insert html
+        };
 
-
+        // create function insert html
         editor.insertHtml = function (html) {
           var viewFragment = editor.data.processor.toView(html);
           var modelFragment = editor.data.toModel(viewFragment);
           editor.model.insertContent(modelFragment);
         };
-
         window.editor = editor;
         _this.CKEDITOR[element] = editor;
         var minHeight = $('#' + element).prop('rows') * 90;
         var className = "ckeditor-".concat(element, "-inline");
-        $(editor.ui.view.editable.element).addClass(className).after("\n                    <style>\n                        .ck-editor__editable_inline {\n                            min-height: ".concat(minHeight - 100, "px;\n                            max-height: ").concat(minHeight + 100, "px;\n                        }\n                    </style>\n                ")); // debounce content for ajax ne
+        $(editor.ui.view.editable.element).addClass(className).after("\n                    <style>\n                        .ck-editor__editable_inline {\n                            min-height: ".concat(minHeight - 100, "px;\n                            max-height: ").concat(minHeight + 100, "px;\n                        }\n                    </style>\n                "));
 
+        // debounce content for ajax ne
         var timeout;
         editor.model.document.on('change:data', function () {
           clearTimeout(timeout);
           timeout = setTimeout(function () {
             editor.updateSourceElement();
           }, 150);
-        }); // insert media embed
+        });
 
+        // insert media embed
         editor.commands._commands.get('mediaEmbed').execute = function (url) {
           editor.insertHtml("[media url=\"".concat(url, "\"][/media]"));
         };
@@ -397,10 +379,8 @@ var EditorManagement = /*#__PURE__*/function () {
     key: "getShortcodesAvailable",
     value: function getShortcodesAvailable(editor) {
       var _$$parents$find;
-
       var $dropdown = (_$$parents$find = $(editor).parents('.form-group').find('.add_shortcode_btn_trigger')) === null || _$$parents$find === void 0 ? void 0 : _$$parents$find.next('.dropdown-menu');
       var lists = [];
-
       if ($dropdown) {
         $dropdown.find('> li').each(function () {
           var item = $(this).find('> a');
@@ -413,7 +393,6 @@ var EditorManagement = /*#__PURE__*/function () {
           });
         });
       }
-
       this.shortcodes = lists;
       return lists;
     }
@@ -421,13 +400,11 @@ var EditorManagement = /*#__PURE__*/function () {
     key: "uploadImageFromEditor",
     value: function uploadImageFromEditor(blobInfo, callback) {
       var formData = new FormData();
-
       if (typeof blobInfo.blob === 'function') {
         formData.append('upload', blobInfo.blob(), blobInfo.filename());
       } else {
         formData.append('upload', blobInfo);
       }
-
       $.ajax({
         type: 'POST',
         data: formData,
@@ -446,7 +423,6 @@ var EditorManagement = /*#__PURE__*/function () {
     key: "initTinyMce",
     value: function initTinyMce(element) {
       var _this2 = this;
-
       tinymce.init({
         menubar: true,
         selector: '#' + element,
@@ -480,16 +456,13 @@ var EditorManagement = /*#__PURE__*/function () {
       if (!element.length) {
         return false;
       }
-
       var current = this;
-
       switch (type) {
         case 'ckeditor':
           $.each(element, function (index, item) {
             current.initCkEditor($(item).prop('id'), extraConfig);
           });
           break;
-
         case 'tinymce':
           $.each(element, function (index, item) {
             current.initTinyMce($(item).prop('id'));
@@ -501,32 +474,23 @@ var EditorManagement = /*#__PURE__*/function () {
     key: "init",
     value: function init() {
       var _this3 = this;
-
       var $ckEditor = $(document).find('.editor-ckeditor');
       var $tinyMce = $(document).find('.editor-tinymce');
       var current = this;
-
       if ($ckEditor.length > 0) {
         current.initEditor($ckEditor, {}, 'ckeditor');
       }
-
       if ($tinyMce.length > 0) {
         current.initEditor($tinyMce, {}, 'tinymce');
       }
-
       $(document).on('click', '.show-hide-editor-btn', function (event) {
         event.preventDefault();
-
         var _self = $(event.currentTarget);
-
         var editorInstance = _self.data('result');
-
         var $result = $('#' + editorInstance);
-
         if ($result.hasClass('editor-ckeditor')) {
           if (_this3.CKEDITOR[editorInstance] && typeof _this3.CKEDITOR[editorInstance] !== 'undefined') {
             _this3.CKEDITOR[editorInstance].destroy();
-
             _this3.CKEDITOR[editorInstance] = null;
             $('.editor-action-item').not('.action-show-hide-editor').hide();
           } else {
@@ -545,26 +509,23 @@ var EditorManagement = /*#__PURE__*/function () {
     value: function shortcodeCallback() {
       var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var href = params.href,
-          key = params.key,
-          _params$description = params.description,
-          description = _params$description === void 0 ? null : _params$description,
-          _params$data = params.data,
-          data = _params$data === void 0 ? {} : _params$data,
-          _params$update = params.update,
-          update = _params$update === void 0 ? false : _params$update;
+        key = params.key,
+        _params$description = params.description,
+        description = _params$description === void 0 ? null : _params$description,
+        _params$data = params.data,
+        data = _params$data === void 0 ? {} : _params$data,
+        _params$update = params.update,
+        update = _params$update === void 0 ? false : _params$update;
       $('.short-code-admin-config').html('');
       var $addShortcodeButton = $('.short_code_modal .add_short_code_btn');
-
       if (update) {
         $addShortcodeButton.text($addShortcodeButton.data('update-text'));
       } else {
         $addShortcodeButton.text($addShortcodeButton.data('add-text'));
       }
-
       if (description !== '' && description != null) {
         $('.short_code_modal .modal-title strong').text(description);
       }
-
       $('.short_code_modal').modal('show');
       $('.half-circle-spinner').show();
       $.ajax({
@@ -576,7 +537,6 @@ var EditorManagement = /*#__PURE__*/function () {
             Botble.showError(res.message);
             return false;
           }
-
           $('.short-code-data-form').trigger('reset');
           $('.short_code_input_key').val(key);
           $('.half-circle-spinner').hide();
@@ -595,7 +555,6 @@ var EditorManagement = /*#__PURE__*/function () {
       var self = this;
       $('.list-shortcode-items li a').on('click', function (event) {
         event.preventDefault();
-
         if ($(this).data('has-admin-config') == '1') {
           self.shortcodeCallback({
             href: $(this).prop('href'),
@@ -605,7 +564,6 @@ var EditorManagement = /*#__PURE__*/function () {
         } else {
           var editorInstance = $('.add_shortcode_btn_trigger').data('result');
           var shortcode = '[' + $(this).data('key') + '][/' + $(this).data('key') + ']';
-
           if ($('.editor-ckeditor').length > 0) {
             self.CKEDITOR[editorInstance].commands.execute('shortcode', shortcode);
           } else {
@@ -613,7 +571,6 @@ var EditorManagement = /*#__PURE__*/function () {
           }
         }
       });
-
       $.fn.serializeObject = function () {
         var o = {};
         var a = this.serializeArray();
@@ -622,7 +579,6 @@ var EditorManagement = /*#__PURE__*/function () {
             if (!o[this.name].push) {
               o[this.name] = [o[this.name]];
             }
-
             o[this.name].push(this.value || '');
           } else {
             o[this.name] = this.value || '';
@@ -630,7 +586,6 @@ var EditorManagement = /*#__PURE__*/function () {
         });
         return o;
       };
-
       $('.add_short_code_btn').on('click', function (event) {
         event.preventDefault();
         var formElement = $('.short_code_modal').find('.short-code-data-form');
@@ -639,10 +594,8 @@ var EditorManagement = /*#__PURE__*/function () {
         $.each(formData, function (name, value) {
           var element = formElement.find('*[name="' + name + '"]');
           var shortcodeAttribute = element.data('shortcode-attribute');
-
           if ((!shortcodeAttribute || shortcodeAttribute !== 'content') && value) {
             name = name.replace('[]', '');
-
             if (element.data('shortcode-attribute') !== 'content') {
               name = name.replace('[]', '');
               attributes += ' ' + name + '="' + value + '"';
@@ -651,29 +604,23 @@ var EditorManagement = /*#__PURE__*/function () {
         });
         var content = '';
         var contentElement = formElement.find('*[data-shortcode-attribute=content]');
-
         if (contentElement != null && contentElement.val() != null && contentElement.val() !== '') {
           content = contentElement.val();
         }
-
         var $shortCodeKey = $(this).closest('.short_code_modal').find('.short_code_input_key').val();
         var editorInstance = $('.add_shortcode_btn_trigger').data('result');
         var shortcode = '[' + $shortCodeKey + attributes + ']' + content + '[/' + $shortCodeKey + ']';
-
         if ($('.editor-ckeditor').length > 0) {
           self.CKEDITOR[editorInstance].commands.execute('shortcode', shortcode);
         } else {
           tinymce.get(editorInstance).execCommand('mceInsertContent', false, shortcode);
         }
-
         $(this).closest('.modal').modal('hide');
       });
     }
   }]);
-
   return EditorManagement;
 }();
-
 $(document).ready(function () {
   window.EDITOR = new EditorManagement().init();
   window.EditorManagement = window.EditorManagement || EditorManagement;

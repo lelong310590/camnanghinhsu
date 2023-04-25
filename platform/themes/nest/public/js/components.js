@@ -2495,6 +2495,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2524,7 +2525,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getData: function getData() {
       var _this = this;
-
       this.data = [];
       this.isLoading = true;
       axios.get(this.url).then(function (res) {
@@ -2588,6 +2588,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2610,7 +2611,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getData: function getData() {
       var _this = this;
-
       this.data = [];
       this.isLoading = true;
       axios.get(this.url).then(function (res) {
@@ -2662,6 +2662,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2697,7 +2698,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getCategories: function getCategories() {
       var _this = this;
-
       this.data = [];
       this.isLoading = true;
       axios.get(this.url).then(function (res) {
@@ -2741,6 +2741,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2763,7 +2764,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getData: function getData() {
       var _this = this;
-
       this.data = [];
       this.isLoading = true;
       axios.get(this.url).then(function (res) {
@@ -2801,6 +2801,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2823,7 +2824,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getProducts: function getProducts() {
       var _this = this;
-
       this.data = [];
       this.isLoading = true;
       axios.get(this.url).then(function (res) {
@@ -2845,7 +2845,6 @@ __webpack_require__.r(__webpack_exports__);
             window.trans = window.trans || {};
             return window.trans[key] !== 'undefined' && window.trans[key] ? window.trans[key] : key;
           };
-
           $this.html(event.strftime('' + '<span class="countdown-section"><span class="countdown-amount hover-up">%D</span><span class="countdown-period"> ' + trans('days') + ' </span></span>' + '<span class="countdown-section"><span class="countdown-amount hover-up">%H</span><span class="countdown-period"> ' + trans('hours') + ' </span></span>' + '<span class="countdown-section"><span class="countdown-amount hover-up">%M</span><span class="countdown-period"> ' + trans('mins') + ' </span></span>' + '<span class="countdown-section"><span class="countdown-amount hover-up">%S</span><span class="countdown-period"> ' + trans('sec') + ' </span></span>'));
         });
       }
@@ -2938,6 +2937,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2974,7 +2974,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getData: function getData() {
       var _this = this;
-
       this.noData = false;
       this.data = [];
       this.isLoading = true;
@@ -3023,6 +3022,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -3058,7 +3058,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getCategories: function getCategories() {
       var _this = this;
-
       this.data = [];
       this.isLoading = true;
       axios.get(this.url).then(function (res) {
@@ -3117,6 +3116,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -3156,7 +3156,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getData: function getData(category) {
       var _this = this;
-
       this.productCategory = category;
       this.data = [];
       this.isLoading = true;
@@ -3210,6 +3209,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -3246,7 +3246,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getData: function getData(productCollection) {
       var _this = this;
-
       this.productCollection = productCollection;
       this.data = [];
       this.isLoading = true;
@@ -3323,6 +3322,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -3347,7 +3347,6 @@ __webpack_require__.r(__webpack_exports__);
     $(document).on('change', '.ps-review__filter-select select', function (event) {
       event.preventDefault();
       var $select = $(event.currentTarget);
-
       if (that.star != $select.val()) {
         that.filterByStar($select.val());
       }
@@ -3356,7 +3355,6 @@ __webpack_require__.r(__webpack_exports__);
       event.preventDefault();
       var $block = $(event.currentTarget);
       var hasActive = $block.hasClass('active');
-
       if (!hasActive) {
         that.filterByStar($block.data('star'));
       } else {
@@ -3370,42 +3368,35 @@ __webpack_require__.r(__webpack_exports__);
       var url = this.url;
       this.star = star;
       $('.ps-block--average-rating .ps-block__star').removeClass('active');
-
       if (star && star != 0) {
         url = this.getUriWithParam(url, {
           'star': star
         });
         $('.ps-block--average-rating .ps-block__star[data-star=' + star + ']').addClass('active');
       }
-
       $('.ps-review__filter-select select').val(star).trigger('change');
       this.getData(url);
     },
     getUriWithParam: function getUriWithParam(baseUrl, params) {
       var url = new URL(baseUrl);
       var urlParams = new URLSearchParams(url.search);
-
       for (var key in params) {
         if (params[key] !== undefined) {
           urlParams.set(key, params[key]);
         }
       }
-
       url.search = urlParams.toString();
       return url.toString();
     },
     getData: function getData(link) {
       var _this = this;
-
       var animation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
       this.isLoading = true;
-
       if (animation) {
         $('html, body').animate({
           scrollTop: $('.block--product-reviews').offset().top - $('.header-area').height() - 165 + 'px'
         }, 1500);
       }
-
       axios.get(link).then(function (res) {
         _this.data = res.data.data || [];
         _this.meta = res.data.meta;
@@ -3418,7 +3409,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     onClickPaginate: function onClickPaginate(_ref) {
       var element = _ref.element;
-
       if (!element.active) {
         this.getData(element.url);
       }
@@ -3426,7 +3416,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   updated: function updated() {
     var $galleries = $('.block__images');
-
     if ($galleries.length) {
       $galleries.map(function (index, value) {
         if (jQuery().magnificPopup) {
@@ -3473,6 +3462,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -3501,7 +3491,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getData: function getData() {
       var _this = this;
-
       this.data = [];
       this.isLoading = true;
       axios.get(this.url + '?limit=' + this.limit).then(function (res) {
@@ -3568,6 +3557,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -3590,7 +3580,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getData: function getData() {
       var _this = this;
-
       this.data = [];
       this.isLoading = true;
       axios.get(this.url).then(function (res) {
@@ -3642,6 +3631,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -3701,7 +3691,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   render: function render() {
     var _this = this;
-
     return this.$scopedSlots["default"]({
       data: this.data,
       computed: {
@@ -3714,7 +3703,6 @@ __webpack_require__.r(__webpack_exports__);
         return {
           click: function click(e) {
             e.preventDefault();
-
             _this.selectPage(params);
           }
         };
@@ -20768,8 +20756,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -20788,16 +20778,15 @@ vue__WEBPACK_IMPORTED_MODULE_12__["default"].component('featured-brands-componen
 vue__WEBPACK_IMPORTED_MODULE_12__["default"].component('product-categories-component', _components_ProductCategoriesComponent__WEBPACK_IMPORTED_MODULE_9__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_12__["default"].component('top-products-group-component', _components_TopProductsGroupComponent__WEBPACK_IMPORTED_MODULE_10__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_12__["default"].component('popular-products', _components_PopularProductsComponent__WEBPACK_IMPORTED_MODULE_11__["default"]);
+
 /**
  * This let us access the `__` method for localization in VueJS templates
  * ({{ __('key') }})
  */
-
 vue__WEBPACK_IMPORTED_MODULE_12__["default"].prototype.__ = function (key) {
   window.trans = window.trans || {};
   return window.trans[key] !== 'undefined' && window.trans[key] ? window.trans[key] : key;
 };
-
 var elements = ['#main-section'];
 elements.forEach(function (element) {
   if ($(element).length) {

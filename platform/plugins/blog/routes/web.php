@@ -84,7 +84,7 @@ Route::group(['namespace' => 'Botble\Blog\Http\Controllers', 'middleware' => ['w
             }
 
             if (SlugHelper::getPrefix(Post::class)) {
-                Route::get(SlugHelper::getPrefix(Post::class) . '/{slug}', [
+                Route::get(SlugHelper::getPrefix(Post::class) . '/{id}', [
                     'uses' => 'PublicController@getPost',
                 ]);
             }

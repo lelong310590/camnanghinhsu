@@ -13,22 +13,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -57,8 +55,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.addRow();
     } else {
       var _iterator = _createForOfIteratorHelper(this.added),
-          _step;
-
+        _step;
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var item = _step.value;
@@ -74,10 +71,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   methods: {
     addRow: function addRow() {
       this.isAdding = true;
-
       var _iterator2 = _createForOfIteratorHelper(this.fields),
-          _step2;
-
+        _step2;
       try {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
           var item = _step2.value;
@@ -88,7 +83,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       } finally {
         _iterator2.f();
       }
-
       this.isAdding = false;
     },
     deleteRow: function deleteRow(index) {
@@ -96,8 +90,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     },
     removeSelectedItem: function removeSelectedItem() {
       var _iterator3 = _createForOfIteratorHelper(this.items),
-          _step3;
-
+        _step3;
       try {
         for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
           var item = _step3.value;
@@ -118,7 +111,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             window.Botble.initResources();
             window.Botble.initMediaIntegrate();
           }
-
           if (window.EditorManagement) {
             new EditorManagement().init();
           }
@@ -12492,11 +12484,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _form_fields_RepeaterComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./form/fields/RepeaterComponent */ "./platform/core/base/resources/assets/js/form/fields/RepeaterComponent.vue");
 
 
-
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.__ = function (key) {
   return _.get(window.trans, key, key);
 };
-
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('repeater-component', _form_fields_RepeaterComponent__WEBPACK_IMPORTED_MODULE_0__["default"]);
 new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   el: '#main'

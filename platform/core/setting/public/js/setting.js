@@ -88,6 +88,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     HalfCircleSpinner: epic_spinners__WEBPACK_IMPORTED_MODULE_0__.HalfCircleSpinner
@@ -147,13 +148,11 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     verifyLicense: function verifyLicense() {
       var _this = this;
-
       axios.get(this.verifyUrl).then(function (res) {
         if (!res.data.error) {
           _this.verified = true;
           _this.license = res.data.data;
         }
-
         _this.isLoading = false;
       })["catch"](function (res) {
         Botble.handleError(res.response.data);
@@ -162,7 +161,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     activateLicense: function activateLicense() {
       var _this2 = this;
-
       this.activating = true;
       axios.post(this.activateLicenseUrl, {
         purchase_code: this.purchaseCode,
@@ -175,7 +173,6 @@ __webpack_require__.r(__webpack_exports__);
           _this2.verified = true;
           _this2.license = res.data.data;
         }
-
         _this2.activating = false;
       })["catch"](function (res) {
         Botble.handleError(res.response.data);
@@ -184,7 +181,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     deactivateLicense: function deactivateLicense() {
       var _this3 = this;
-
       this.deactivating = true;
       axios.post(this.deactivateLicenseUrl).then(function (res) {
         if (res.data.error) {
@@ -192,7 +188,6 @@ __webpack_require__.r(__webpack_exports__);
         } else {
           _this3.verified = false;
         }
-
         _this3.deactivating = false;
       })["catch"](function (res) {
         Botble.handleError(res.response.data);
@@ -201,7 +196,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     resetLicense: function resetLicense() {
       var _this4 = this;
-
       this.deactivating = true;
       axios.post(this.resetLicenseUrl, {
         purchase_code: this.purchaseCode,
@@ -213,7 +207,6 @@ __webpack_require__.r(__webpack_exports__);
           _this4.deactivating = false;
           return false;
         }
-
         _this4.verified = false;
         _this4.deactivating = false;
         Botble.showSuccess(res.data.message);
@@ -18610,13 +18603,12 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_LicenseComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/LicenseComponent */ "./platform/core/setting/resources/assets/js/components/LicenseComponent.vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 
 if (document.getElementById('main-settings')) {
@@ -18625,23 +18617,18 @@ if (document.getElementById('main-settings')) {
     el: '#main-settings'
   });
 }
-
 var SettingManagement = /*#__PURE__*/function () {
   function SettingManagement() {
     _classCallCheck(this, SettingManagement);
   }
-
   _createClass(SettingManagement, [{
     key: "init",
     value: function init() {
       this.handleMultipleAdminEmails();
       $('input[data-key=email-config-status-btn]').on('change', function (event) {
         var _self = $(event.currentTarget);
-
         var key = _self.prop('id');
-
         var url = _self.data('change-url');
-
         $.ajax({
           type: 'POST',
           url: url,
@@ -18667,13 +18654,9 @@ var SettingManagement = /*#__PURE__*/function () {
       });
       $('.send-test-email-trigger-button').on('click', function (event) {
         event.preventDefault();
-
         var _self = $(event.currentTarget);
-
         var defaultText = _self.text();
-
         _self.text(_self.data('saving'));
-
         $.ajax({
           type: 'POST',
           url: route('settings.email.edit'),
@@ -18685,23 +18668,18 @@ var SettingManagement = /*#__PURE__*/function () {
             } else {
               Botble.showError(res.message);
             }
-
             _self.text(defaultText);
           },
           error: function error(res) {
             Botble.handleError(res);
-
             _self.text(defaultText);
           }
         });
       });
       $('#send-test-email-btn').on('click', function (event) {
         event.preventDefault();
-
         var _self = $(event.currentTarget);
-
         _self.addClass('button-loading');
-
         $.ajax({
           type: 'POST',
           url: route('setting.email.send.test'),
@@ -18714,29 +18692,21 @@ var SettingManagement = /*#__PURE__*/function () {
             } else {
               Botble.showError(res.message);
             }
-
             _self.removeClass('button-loading');
-
             _self.closest('.modal').modal('hide');
           },
           error: function error(res) {
             Botble.handleError(res);
-
             _self.removeClass('button-loading');
-
             _self.closest('.modal').modal('hide');
           }
         });
       });
       $('.generate-thumbnails-trigger-button').on('click', function (event) {
         event.preventDefault();
-
         var _self = $(event.currentTarget);
-
         var defaultText = _self.text();
-
         _self.text(_self.data('saving'));
-
         $.ajax({
           type: 'POST',
           url: route('settings.media.post'),
@@ -18747,23 +18717,18 @@ var SettingManagement = /*#__PURE__*/function () {
             } else {
               Botble.showError(res.message);
             }
-
             _self.text(defaultText);
           },
           error: function error(res) {
             Botble.handleError(res);
-
             _self.text(defaultText);
           }
         });
       });
       $('#generate-thumbnails-button').on('click', function (event) {
         event.preventDefault();
-
         var _self = $(event.currentTarget);
-
         _self.addClass('button-loading');
-
         $.ajax({
           type: 'POST',
           url: route('settings.media.generate-thumbnails'),
@@ -18773,25 +18738,19 @@ var SettingManagement = /*#__PURE__*/function () {
             } else {
               Botble.showError(res.message);
             }
-
             _self.removeClass('button-loading');
-
             _self.closest('.modal').modal('hide');
           },
           error: function error(res) {
             Botble.handleError(res);
-
             _self.removeClass('button-loading');
-
             _self.closest('.modal').modal('hide');
           }
         });
       });
-
       if (typeof CodeMirror !== 'undefined') {
         Botble.initCodeEditor('mail-template-editor');
       }
-
       $(document).on('click', '.btn-trigger-reset-to-default', function (event) {
         event.preventDefault();
         $('#reset-template-to-default-button').data('target', $(event.currentTarget).data('target'));
@@ -18799,11 +18758,8 @@ var SettingManagement = /*#__PURE__*/function () {
       });
       $(document).on('click', '#reset-template-to-default-button', function (event) {
         event.preventDefault();
-
         var _self = $(event.currentTarget);
-
         _self.addClass('button-loading');
-
         $.ajax({
           type: 'POST',
           cache: false,
@@ -18822,25 +18778,19 @@ var SettingManagement = /*#__PURE__*/function () {
             } else {
               Botble.showError(res.message);
             }
-
             _self.removeClass('button-loading');
-
             $('#reset-template-to-default-modal').modal('hide');
           },
           error: function error(res) {
             Botble.handleError(res);
-
             _self.removeClass('button-loading');
           }
         });
       });
       $(document).on('change', '.check-all', function (event) {
         var _self = $(event.currentTarget);
-
         var set = _self.attr('data-set');
-
         var checked = _self.prop('checked');
-
         $(set).each(function (index, el) {
           if (checked) {
             $(el).prop('checked', true);
@@ -18864,41 +18814,33 @@ var SettingManagement = /*#__PURE__*/function () {
     key: "handleMultipleAdminEmails",
     value: function handleMultipleAdminEmails() {
       var $wrapper = $('#admin_email_wrapper');
-
       if (!$wrapper.length) {
         return;
       }
-
       var $addBtn = $wrapper.find('#add');
       var max = parseInt($wrapper.data('max'), 10);
       var emails = $wrapper.data('emails');
-
       if (emails.length === 0) {
         emails = [''];
       }
-
       var onAddEmail = function onAddEmail() {
         var count = $wrapper.find('input[type=email]').length;
-
         if (count >= max) {
           $addBtn.addClass('disabled');
         } else {
           $addBtn.removeClass('disabled');
         }
       };
-
       var addEmail = function addEmail() {
         var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
         return $addBtn.before("<div class=\"d-flex mt-2 more-email align-items-center\">\n                <input type=\"email\" class=\"next-input\" placeholder=\"".concat($addBtn.data('placeholder'), "\" name=\"admin_email[]\" value=\"").concat(value ? value : '', "\" />\n                <a class=\"btn btn-link text-danger\"><i class=\"fas fa-minus\"></i></a>\n            </div>"));
       };
-
       var render = function render() {
         emails.forEach(function (email) {
           addEmail(email);
         });
         onAddEmail();
       };
-
       $wrapper.on('click', '.more-email > a', function () {
         $(this).parent('.more-email').remove();
         onAddEmail();
@@ -18911,10 +18853,8 @@ var SettingManagement = /*#__PURE__*/function () {
       render();
     }
   }]);
-
   return SettingManagement;
 }();
-
 $(document).ready(function () {
   new SettingManagement().init();
 });

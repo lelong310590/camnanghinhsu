@@ -21,7 +21,6 @@
   margin-left: -9px;
   width: 18px;
   height: 18px;
-  -webkit-animation: button-loading-spinner 0.7s linear infinite;
   animation: button-loading-spinner 1s linear infinite;
   border-color: #ffffff;
   border-bottom-color: transparent;
@@ -151,15 +150,6 @@
   }
   .contact-form .contact-column-12 {
     width: 100%;
-  }
-}
-
-@-webkit-keyframes button-loading-spinner {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
   }
 }
 @keyframes button-loading-spinner {

@@ -485,23 +485,6 @@ h4 {
   transition: all 0.3s ease 0s;
 }
 
-@-webkit-keyframes slideleft {
-  10% {
-    opacity: 0;
-    transform: scale(0);
-    right: 0;
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  90% {
-    opacity: 0;
-    transform: scale(0);
-    right: 100%;
-  }
-}
-
 @keyframes slideleft {
   10% {
     opacity: 0;
@@ -522,22 +505,9 @@ h4 {
   width: 35px;
   height: 35px;
   display: inline-block;
-  -webkit-animation: spinner 1.2s infinite ease-in-out;
   animation: spinner 1.2s infinite ease-in-out;
   background: url(../imgs/favicon.svg);
   box-shadow: 0 0 10px #fff;
-}
-
-@-webkit-keyframes spinner {
-  0% {
-    transform: perspective(120px) rotateX(0) rotateY(0);
-  }
-  50% {
-    transform: perspective(120px) rotateX(-180deg) rotateY(0);
-  }
-  100% {
-    transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
-  }
 }
 @keyframes spinner {
   0% {
@@ -550,14 +520,6 @@ h4 {
     transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
   }
 }
-@-webkit-keyframes shadow-pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(239, 63, 72, 0.8);
-  }
-  100% {
-    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0);
-  }
-}
 @keyframes shadow-pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(239, 63, 72, 0.8);
@@ -566,28 +528,12 @@ h4 {
     box-shadow: 0 0 0 5px rgba(0, 0, 0, 0);
   }
 }
-@-webkit-keyframes shadow-pulse-big {
-  0% {
-    box-shadow: 0 0 0 0 rgba(239, 63, 72, 0.1);
-  }
-  100% {
-    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
-  }
-}
 @keyframes shadow-pulse-big {
   0% {
     box-shadow: 0 0 0 0 rgba(239, 63, 72, 0.1);
   }
   100% {
     box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
-  }
-}
-@-webkit-keyframes jump {
-  0% {
-    transform: translate3d(0, 20%, 0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
   }
 }
 @keyframes jump {
@@ -600,8 +546,7 @@ h4 {
 }
 .jump {
   transform-origin: 0;
-  -webkit-animation: jump 0.5s linear alternate infinite;
-          animation: jump 0.5s linear alternate infinite;
+  animation: jump 0.5s linear alternate infinite;
 }
 
 /*TYPOGRAPHY*/
@@ -1551,65 +1496,45 @@ form .search-form button:hover {
 
 /*COMPONENTS -> SLIDER*/
 .single-animation-wrap.slick-active .slider-animated-1 h1 {
-  -webkit-animation-delay: 1.4s;
   animation-delay: 1.4s;
-  -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
 .single-animation-wrap.slick-active .slider-animated-1 h2 {
-  -webkit-animation-delay: 1.2s;
   animation-delay: 1.2s;
-  -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
 .single-animation-wrap.slick-active .slider-animated-1 h3 {
-  -webkit-animation-delay: 1s;
   animation-delay: 1s;
-  -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
 .single-animation-wrap.slick-active .slider-animated-1 h4 {
-  -webkit-animation-delay: 1s;
   animation-delay: 1s;
-  -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
 .single-animation-wrap.slick-active .slider-animated-1 span {
-  -webkit-animation-delay: 0.5s;
   animation-delay: 0.5s;
-  -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
 .single-animation-wrap.slick-active .slider-animated-1 p {
-  -webkit-animation-delay: 1.7s;
   animation-delay: 1.7s;
-  -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
 .single-animation-wrap.slick-active .slider-animated-1 a.btn {
-  -webkit-animation-delay: 2s;
   animation-delay: 2s;
-  -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
 .single-animation-wrap.slick-active .slider-animated-1.slider-product-price {
-  -webkit-animation-delay: 1.2s;
   animation-delay: 1.2s;
-  -webkit-animation-name: flipInY;
   animation-name: flipInY;
 }
 .single-animation-wrap.slick-active .slider-animated-1 .single-slider-img img {
-  -webkit-animation-delay: 1.5s;
   animation-delay: 1.5s;
-  -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
 
 .single-animation-wrap.slick-active .slider-animated-1 .slider-product-offer-wrap,
 .single-animation-wrap.slick-active .slider-animated-1 .slider-product-offer-wrap-2 {
-  -webkit-animation-delay: 1s;
   animation-delay: 1s;
-  -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
 
@@ -2430,38 +2355,31 @@ form .search-form button:hover {
   background: var(--color-brand);
   opacity: 0;
   border-radius: 10px;
-  -webkit-animation: slideleft 3s ease-in-out infinite;
-          animation: slideleft 3s ease-in-out infinite;
+  animation: slideleft 3s ease-in-out infinite;
 }
 
 .bar1::before {
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
 }
 
 .bar1::after {
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
+  animation-delay: 0.3s;
 }
 
 .bar2::before {
-  -webkit-animation-delay: 0.6s;
-          animation-delay: 0.6s;
+  animation-delay: 0.6s;
 }
 
 .bar2::after {
-  -webkit-animation-delay: 0.9s;
-          animation-delay: 0.9s;
+  animation-delay: 0.9s;
 }
 
 .bar3::before {
-  -webkit-animation-delay: 1.2s;
-          animation-delay: 1.2s;
+  animation-delay: 1.2s;
 }
 
 .bar3::after {
-  -webkit-animation-delay: 1.5s;
-          animation-delay: 1.5s;
+  animation-delay: 1.5s;
 }
 
 /*page header*/
@@ -2775,7 +2693,6 @@ form .search-form button:hover {
 }
 
 .social-icons li:hover i {
-  -webkit-animation: toTopFromBottom 0.2s forwards;
   animation: toTopFromBottom 0.2s forwards;
 }
 
@@ -3293,7 +3210,6 @@ table .product-thumbnail img {
 }
 .block--review .block__images.block__images_total a {
   padding: 1.5px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   width: inherit;
@@ -5969,7 +5885,6 @@ h6.post-title {
 }
 
 .sticky-bar.stick {
-  -webkit-animation: 700ms ease-in-out 0s normal none 1 running fadeInDown;
   animation: 700ms ease-in-out 0s normal none 1 running fadeInDown;
   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.05);
   position: fixed;
@@ -7473,7 +7388,6 @@ span.fi-rs-apps {
   transform: translateY(-35px) !important;
 }
 .follow-us a i {
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform: translateY(0);
   transition: 0.2s cubic-bezier(0.65, 0.23, 0.31, 0.88);
@@ -10379,22 +10293,11 @@ p:empty {
 }
 .half-circle-spinner .circle.circle-1 {
   border-top-color: var(--color-brand);
-  -webkit-animation: half-circle-spinner-animation 1s infinite;
-          animation: half-circle-spinner-animation 1s infinite;
+  animation: half-circle-spinner-animation 1s infinite;
 }
 .half-circle-spinner .circle.circle-2 {
   border-bottom-color: var(--color-brand);
-  -webkit-animation: half-circle-spinner-animation 1s infinite alternate;
-          animation: half-circle-spinner-animation 1s infinite alternate;
-}
-
-@-webkit-keyframes half-circle-spinner-animation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  animation: half-circle-spinner-animation 1s infinite alternate;
 }
 
 @keyframes half-circle-spinner-animation {
@@ -10433,7 +10336,6 @@ p:empty {
   margin-left: -9px;
   width: 18px;
   height: 18px;
-  -webkit-animation: button-loading-spinner 0.7s linear infinite;
   animation: button-loading-spinner 1s linear infinite;
   border-color: #ffffff;
   border-bottom-color: transparent;
@@ -10451,15 +10353,6 @@ p:empty {
 }
 .button-loading.btn-fill-out:after {
   display: none;
-}
-
-@-webkit-keyframes button-loading-spinner {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 @keyframes button-loading-spinner {
   from {
@@ -10814,7 +10707,6 @@ body.show-admin-bar .sticky-bar.stick {
 }
 .product-cart-wrap .product-action-1 a.action-btn.button-loading:before, .product-cart-wrap .product-action-1 button.button-loading:before {
   left: 50%;
-  -webkit-animation: button-loading-spinner 0.7s linear infinite;
   animation: button-loading-spinner 1s linear infinite;
   border: 3px solid;
   border-color: #fff #fff transparent;
@@ -10851,7 +10743,6 @@ body.show-admin-bar .sticky-bar.stick {
   margin-left: -9px;
   width: 18px;
   height: 18px;
-  -webkit-animation: button-loading-spinner 0.7s linear infinite;
   animation: button-loading-spinner 1s linear infinite;
   border-color: var(--color-brand);
   border-bottom-color: transparent;
@@ -11088,7 +10979,6 @@ small {
   margin-left: -9px;
   width: 18px;
   height: 18px;
-  -webkit-animation: button-loading-spinner 0.7s linear infinite;
   animation: button-loading-spinner 1s linear infinite;
   border-color: var(--color-brand);
   border-bottom-color: transparent;
@@ -11876,4 +11766,86 @@ input.qty-input[type=number] {
 
 .slider-nav-thumbnails .slick-track {
   transform: translate3d(0px, 0px, 0px) !important;
+}
+
+.menuBT, .menuBTSearch {
+  padding: 10px;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #b9b9b9;
+  background: #fff;
+  max-width: 768px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menuBT a {
+  padding: 10px;
+  text-decoration: none;
+}
+
+.menuBT a > i {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.menuBTSearch a > i {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.menuBT .findText, .menuBT .backTop {
+  float: right;
+  padding: 0 10px;
+}
+
+.menuBTSearch a {
+  padding: 10px 2px;
+  text-decoration: none;
+}
+
+.formSearch {
+  background: #efefef;
+  height: 30px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 0 5px !important;
+  justify-content: space-between;
+}
+
+.formSearch #txtKey {
+  border: 0;
+  background: #efefef;
+  font-size: 14px;
+  height: 27px;
+  outline: none;
+  max-width: 768px !important;
+}
+
+.formSearch i {
+  font-size: 14px;
+}
+
+.formSearch .fa-times-circle {
+  float: right;
+}
+
+.formSearch .numfuond {
+  width: 50px;
+  font-size: 12px;
+  float: right;
+  text-align: right;
+  padding-right: 5px;
+}
+
+.highlighted {
+  background-color: yellow;
+}
+
+.highlighted.active {
+  background: #fb8484 !important;
 }

@@ -21,6 +21,77 @@ use Theme;
 
 class BlogService
 {
+    public function handleFrontRoutesById($id)
+    {
+        $condition = [
+            'id'     => $id,
+            'status' => BaseStatusEnum::PUBLISHED,
+        ];
+
+        if (Auth::check() && request()->input('preview')) {
+            Arr::forget($condition, 'status');
+        }
+
+        $post = app(PostInterface::class)
+            ->getFirstBy(
+                $condition,
+                ['*'],
+                ['categories', 'tags', 'slugable', 'categories.slugable', 'tags.slugable']
+            );
+
+        if (empty($post)) {
+            abort(404);
+        }
+
+        Helper::handleViewCount($post, 'viewed_post');
+
+        SeoHelper::setTitle($post->name)
+            ->setDescription($post->description);
+
+        $meta = new SeoOpenGraph();
+        if ($post->image) {
+            $meta->setImage(RvMedia::getImageUrl($post->image));
+        }
+        $meta->setDescription($post->description);
+        $meta->setUrl($post->url);
+        $meta->setTitle($post->name);
+        $meta->setType('article');
+
+        SeoHelper::setSeoOpenGraph($meta);
+
+        if (function_exists('admin_bar') && Auth::check() && Auth::user()->hasPermission('posts.edit')) {
+            admin_bar()->registerLink(
+                trans('plugins/blog::posts.edit_this_post'),
+                route('posts.edit', $post->id)
+            );
+        }
+
+        Theme::breadcrumb()->add(__('Home'), route('public.index'));
+
+        $category = $post->categories->sortByDesc('id')->first();
+        if ($category) {
+            if ($category->parents->count()) {
+                foreach ($category->parents as $parentCategory) {
+                    Theme::breadcrumb()->add($parentCategory->name, $parentCategory->url);
+                }
+            }
+
+            Theme::breadcrumb()->add($category->name, $category->url);
+        }
+
+        Theme::breadcrumb()->add(SeoHelper::getTitle(), $post->url);
+
+        do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, POST_MODULE_SCREEN_NAME, $post);
+
+        return [
+            'view'         => 'post',
+            'default_view' => 'plugins/blog::themes.post',
+            'data'         => compact('post'),
+            'slug'         => $post->slug,
+        ];
+    }
+
+
     /**
      * @param Slug $slug
      * @return array|Eloquent

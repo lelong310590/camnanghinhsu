@@ -29,8 +29,6 @@ class PostForm extends FormAbstract
         $selectedTypes = [];
         if ($this->getModel()) {
             $selectedCategories = $this->getModel()->categories()->pluck('category_id')->all();
-
-
         }
 
         $types = app(TypeInterface::class)
@@ -60,7 +58,7 @@ class PostForm extends FormAbstract
         }
 
         $this
-            ->setupModel(new Post())
+            ->setupModel(new Post)
             ->setValidatorClass(PostRequest::class)
             ->withCustomFields()
             ->addCustomField('tags', TagField::class)

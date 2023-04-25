@@ -538,9 +538,9 @@ div.dataTables_info {
 
 @media screen and (max-width: 768px) {
   .form-filter > input,
-.form-filter .ui-select-wrapper,
-.form-filter .ui-select-wrapper + span,
-.form-filter a {
+  .form-filter .ui-select-wrapper,
+  .form-filter .ui-select-wrapper + span,
+  .form-filter a {
     width: 27% !important;
     max-width: none;
     margin-bottom: 10px;
@@ -548,9 +548,9 @@ div.dataTables_info {
 }
 @media screen and (max-width: 480px) {
   .form-filter > input,
-.form-filter .ui-select-wrapper,
-.form-filter .ui-select-wrapper + span,
-.form-filter a {
+  .form-filter .ui-select-wrapper,
+  .form-filter .ui-select-wrapper + span,
+  .form-filter a {
     width: 100% !important;
   }
 }

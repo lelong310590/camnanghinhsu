@@ -3,17 +3,16 @@ var __webpack_exports__ = {};
 /*!********************************************************!*\
   !*** ./platform/core/acl/resources/assets/js/login.js ***!
   \********************************************************/
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var Login = /*#__PURE__*/function () {
   function Login() {
     _classCallCheck(this, Login);
   }
-
   _createClass(Login, [{
     key: "handleLogin",
     value: function handleLogin() {
@@ -51,6 +50,7 @@ var Login = /*#__PURE__*/function () {
           // highlight error inputs
           $(element).closest('.form-group').addClass('has-error'); // set error class to the control group
         },
+
         success: function success(label) {
           label.closest('.form-group').removeClass('has-error');
           label.remove();
@@ -62,10 +62,10 @@ var Login = /*#__PURE__*/function () {
           form.submit(); // form validation success, call ajax form submit
         }
       });
+
       $('.login-form input').keypress(function (e) {
         if (e.which === 13) {
           var $form = $('.login-form');
-
           if ($form.validate().form()) {
             $form.submit(); //form validation success, call ajax form submit
           }
@@ -104,6 +104,7 @@ var Login = /*#__PURE__*/function () {
           // hightlight error inputs
           $(element).closest('.form-group').addClass('has-error'); // set error class to the control group
         },
+
         success: function success(label) {
           label.closest('.form-group').removeClass('has-error');
           label.remove();
@@ -120,7 +121,6 @@ var Login = /*#__PURE__*/function () {
           if ($('.forget-form').validate().form()) {
             $('.forget-form').submit();
           }
-
           return false;
         }
       });
@@ -132,21 +132,19 @@ var Login = /*#__PURE__*/function () {
       this.handleForgetPassword();
     }
   }]);
-
   return Login;
 }();
-
 $(document).ready(function () {
   new Login().init();
   var username = document.querySelector('[name="username"]');
   var email = document.querySelector('[name="email"]');
   var password = document.querySelector('[name="password"]');
   var passwordConfirmation = document.querySelector('[name="password_confirmation"]');
-
   if (username) {
     username.focus();
-    document.getElementById('emailGroup').classList.add('focused'); // Focus events for email and password fields
+    document.getElementById('emailGroup').classList.add('focused');
 
+    // Focus events for email and password fields
     username.addEventListener('focusin', function () {
       document.getElementById('emailGroup').classList.add('focused');
     });
@@ -154,11 +152,11 @@ $(document).ready(function () {
       document.getElementById('emailGroup').classList.remove('focused');
     });
   }
-
   if (email) {
     email.focus();
-    document.getElementById('emailGroup').classList.add('focused'); // Focus events for email and password fields
+    document.getElementById('emailGroup').classList.add('focused');
 
+    // Focus events for email and password fields
     email.addEventListener('focusin', function () {
       document.getElementById('emailGroup').classList.add('focused');
     });
@@ -166,7 +164,6 @@ $(document).ready(function () {
       document.getElementById('emailGroup').classList.remove('focused');
     });
   }
-
   if (password) {
     password.addEventListener('focusin', function () {
       document.getElementById('passwordGroup').classList.add('focused');
@@ -175,7 +172,6 @@ $(document).ready(function () {
       document.getElementById('passwordGroup').classList.remove('focused');
     });
   }
-
   if (passwordConfirmation) {
     passwordConfirmation.addEventListener('focusin', function () {
       document.getElementById('passwordConfirmationGroup').classList.add('focused');

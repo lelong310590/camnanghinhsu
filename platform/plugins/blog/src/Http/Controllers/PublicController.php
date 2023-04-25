@@ -73,19 +73,15 @@ class PublicController extends Controller
      */
     public function getPost($slug, BlogService $blogService)
     {
-        $slug = SlugHelper::getSlug($slug, SlugHelper::getPrefix(Post::class));
+//        $slug = SlugHelper::getSlug($slug, SlugHelper::getPrefix(Post::class));
+//
+//        if (!$slug) {
+//            abort(404);
+//        }
 
-        if (!$slug) {
-            abort(404);
-        }
+        $data = $blogService->handleFrontRoutesById($slug);
 
-        $data = $blogService->handleFrontRoutes($slug);
-
-        if (isset($data['slug']) && $data['slug'] !== $slug->key) {
-            return redirect()->to(route('public.single', SlugHelper::getPrefix(Post::class) . '/' . $data['slug']));
-        }
-
-        event(new RenderingSingleEvent($slug));
+//        event(new RenderingSingleEvent($slug));
 
         return Theme::scope($data['view'], $data['data'], $data['default_view'])
             ->render();

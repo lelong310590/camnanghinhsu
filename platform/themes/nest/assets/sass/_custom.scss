@@ -2013,3 +2013,91 @@ input.qty-input[type=number] {
         transform: translate3d(0px, 0px, 0px) !important;
     }
 }
+
+.menuBT, .menuBTSearch {
+    padding: 10px;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #b9b9b9;
+    background: #fff;
+    max-width: 768px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menuBT a {
+    padding: 10px;
+    text-decoration: none;
+}
+
+.menuBT a > i {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.menuBTSearch a > i {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.menuBT .findText, .menuBT .backTop {
+    float: right;
+    padding: 0 10px;
+}
+
+.menuBTSearch a {
+    padding: 10px 2px;
+    text-decoration: none;
+}
+
+.formSearch {
+    background: #efefef;
+    height: 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 5px !important;
+    justify-content: space-between;
+}
+
+.formSearch #txtKey {
+    border: 0;
+    background: #efefef;
+    font-size: 14px;
+    height: 27px;
+    outline: none;
+    max-width: 768px !important;
+}
+
+.formSearch i {
+    font-size: 14px;
+}
+
+.formSearch .fa-times-circle {
+    float: right;
+}
+
+.formSearch .numfuond {
+    width: 50px;
+    font-size: 12px;
+    float: right;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.highlighted {
+    background-color: yellow;
+}
+
+//.searchClose {
+//    position: absolute;
+//    right: 20px;
+//    top: -5px;
+//}
+
+.highlighted.active {
+    background: #fb8484 !important;
+}

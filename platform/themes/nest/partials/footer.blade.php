@@ -110,5 +110,254 @@
             });
         </script>
     @endif
+
+    <script type="text/javascript">
+        function fSizeUp() {
+            var cf = parseInt($(".fSize").attr("fValue")) + 2;
+            $(".MainContent *").css("font-size", "" + cf + "px");
+            $(".fSize").attr("fValue", cf);
+            $(".fSize").html(cf - 2);
+            setCookie("fSize", cf, 7);
+        }
+        function fSizeDown() {
+            var cf = parseInt($(".fSize").attr("fValue")) - 2;
+            $(".MainContent *").css("font-size", "" + cf + "px");
+            $(".fSize").attr("fValue", cf);
+            $(".fSize").html(cf - 2);
+            setCookie("fSize", cf, 7);
+        }
+
+        function RemoveHighlight(highlightClass) {
+            $('.' + highlightClass).each(function (i, v) {
+                var $parent = $(this).parent();
+                $(this).contents().unwrap();
+                $parent.get(0).normalize();
+            });
+        }
+
+        var VietNamChar = ["[a|á|à|ạ|ả|ã|â|ấ|ầ|ậ|ẩ|ẫ|ă|ắ|ằ|ặ|ẳ|ẵ]", "[e|é|è|ẹ|ẻ|ẽ|ê|ế|ề|ệ|ể|ễ]", "[o|ó|ò|ọ|ỏ|õ|ô|ố|ồ|ộ|ổ|ỗ|ơ|ớ|ờ|ợ|ở|ỡ]", "[u|ú|ù|ụ|ủ|ũ|ư|ứ|ừ|ự|ử|ữ]", "[i|í|ì|ị|ỉ|ĩ]", "[d|đ]", "[y|ý|ỳ|ỵ|ỷ|ỹ]"];
+        //var VietNamChar = ["[a|á|à|ả|ã|ạ|â|ấ|ầ|ẩ|ẫ|ậ|ă|ắ|ằ|ẳ|ẵ|ặ]", "[â|ấ|ầ|ẩ|ẫ|ậ]", "[ă|ắ|ằ|ẳ|ẵ|ặ]", "[á|ấ|ắ]", "[à|ầ|ằ]", "[ả|ẩ|ẵ]", "[ã|ẫ|ẵ]", "[ạ|ậ|ặ]", "ấ", "ầ", "ẩ", "ẫ", "ậ", "ắ", "ằ", "ẳ", "ẵ", "ặ", "[e|é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ]", "[ê|ế|ề|ể|ễ|ệ]", "[é|ế]", "[è|ề]", "[ẻ|ể]", "[ẽ|ễ]", "[ẹ|ệ]", "ế", "ề", "ể", "ễ", "ệ", "[o|ó|ò|ỏ|ọ|õ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ]", "[ô|ố|ồ|ổ|ỗ|ộ]", "[ơ|ớ|ờ|ở|ỡ|ợ]", "[ó|ố|ớ]", "[ò|ồ|ờ]", "[ỏ|ổ|ở]", "[õ|ỗ|ỡ]", "[ọ|ộ|ợ]", "ố", "ồ", "ổ", "ỗ", "ộ", "ớ", "ờ", "ở", "ỡ", "ợ", "[u|ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự]", "[ư|ứ|ừ|ử|ữ|ự]", "[ú|ứ]", "[ù|ù]", "[ủ|ủ]", "[ũ|ũ]", "[ụ|ụ]", "ứ", "ừ", "ử", "ữ", "ự", "[i|í|ì|ỉ|ĩ|ị]", "í", "ì", "ỉ", "ĩ", "ị", "[y|ý|ỳ|ỵ|ỷ|ỹ]", "ý", "ỳ", "ỷ", "ỹ", "ỵ", "[d|đ]"];
+        function searchAndHighlight(searchTerm, selector, highlightClass, removePreviousHighlights) {
+            if (searchTerm) {
+                var _rs = "";
+                var _temp = searchTerm.toLowerCase();
+                var mt = "";
+                for (var i = 0; i < _temp.length; i++) {
+                    mt = _temp.charAt(i);
+                    for (var j = VietNamChar.length - 1; j >= 0; j--) {
+                        if (VietNamChar[j].indexOf(_temp.charAt(i)) >= 0) {
+                            mt = VietNamChar[j];
+                            j = -1;
+                        }
+                    }
+                    _rs = _rs + mt;
+                }
+
+                var selector = selector || "body",
+                    searchTermRegEx = new RegExp("(" + _rs + ")", "gi"),
+                    matches = 0,
+                    helper = {};
+                helper.doHighlight = function (node, searchTerm) {
+                    if (node.nodeType === 3) {
+                        if (node.nodeValue.match(searchTermRegEx)) {
+                            matches++;
+                            var tempNode = document.createElement('span');
+                            tempNode.innerHTML = node.nodeValue.replace(searchTermRegEx, "<span class='" + highlightClass + "'>$1</span>");
+                            node.parentNode.replaceChild(tempNode, node);
+                        }
+                    }
+                    else if (node.nodeType === 1 && node.childNodes && !/(style|script)/i.test(node.tagName)) {
+                        $.each(node.childNodes, function (i, v) {
+                            helper.doHighlight(node.childNodes[i], searchTerm);
+                        });
+                    }
+                };
+                if (removePreviousHighlights) {
+                    $('.' + highlightClass).each(function (i, v) {
+                        var $parent = $(this).parent();
+                        $(this).contents().unwrap();
+                        $parent.get(0).normalize();
+                    });
+                }
+
+                $.each($(selector).children(), function (index, val) {
+
+                    helper.doHighlight(this, searchTerm);
+                });
+                return matches;
+            }
+            return 0;
+        }
+
+        let isShow = false;
+        let isShowFont = false;
+        let fSize = 0;
+        let isIphone = '0';
+
+        let _keyCode = 0;
+        let count = 0;
+        let _index = 0;
+        let _length = 0;
+
+        $("#txtKey").keyup(function myfunction(event) {
+            if (event.keyCode === 231) {
+                _keyCode = event.keyCode;
+            }
+            else if (event.keyCode === 8 && (_keyCode === 231 || _keyCode === 239)) {
+                _keyCode = _keyCode + event.keyCode;
+            }
+            else {
+                _keyCode = 0;
+                if (event.keyCode === 13) {
+                    $("#txtKey").blur();
+                    document.activeElement.blur();
+                    if ($('#txtKey').val() === "") {
+                        if (count > 0) {
+                            count = 0;
+                            RemoveHighlight('highlighted');
+                            $(".formSearch .numfuond").html('');
+                        }
+                    }
+                }
+                else if (event.keyCode === 32) {
+
+                }
+                else if (_length !== $('#txtKey').val().length) {
+                    _length = $('#txtKey').val().length;
+
+                    if ($('#txtKey').val() === "") {
+                        if (count > 0) {
+                            count = 0;
+                            RemoveHighlight('highlighted');
+                            $(".formSearch .numfuond").html('');
+                        }
+                    }
+                    else {
+
+                        _index = 0;
+                        count = searchAndHighlight($('#txtKey').val(), '.MainContent', 'highlighted', true);
+                        count = $(".MainContent .highlighted").length;
+                        if (count > 0)
+                            $(".formSearch .numfuond").html("1/" + count);
+                        else
+                            $(".formSearch .numfuond").html(count);
+
+                        $(".MainContent .highlighted").each(function (index) {
+                            if (_index === index) {
+                                var topHL = $(this);
+                                $(this).addClass("active");
+                                var targetOffset = topHL.offset().top - 100;
+                                $('html,body').animate({ scrollTop: targetOffset }, 500);
+                                return false;
+                            }
+                        });
+                    }
+
+                }
+            }
+
+        });
+
+        $(".searchUp").click(function myfunction() {
+            $("#txtKey").focus();
+            if (count > 0) {
+
+                _index = _index - 1;
+
+                if (_index < 0) {
+                    _index = count - 1;
+                }
+
+
+
+                $(".MainContent .highlighted").each(function (index) {
+                    var topHL = $(this);
+                    if (_index == index) {
+
+                        $(this).addClass("active");
+                        var targetOffset = topHL.offset().top - 100;
+                        $('html,body').animate({ scrollTop: targetOffset }, 500);
+                        $(".formSearch .numfuond").html(_index + 1 + "/" + count);
+                    }
+                    else {
+                        $(this).removeClass("active");
+                    }
+                });
+            }
+
+        });
+
+        $(".searchDown").click(function myfunction() {
+            $("#txtKey").focus();
+            if (count > 0) {
+                _index = _index + 1;
+                if (_index == count) {
+                    _index = 0;
+                }
+                $(".MainContent .highlighted").each(function (index) {
+                    var topHL = $(this);
+                    if (_index == index) {
+
+                        $(this).addClass("active");
+                        var targetOffset = topHL.offset().top - 100;
+                        $('html,body').animate({ scrollTop: targetOffset }, 500);
+                        $(".formSearch .numfuond").html(_index + 1 + "/" + count);
+                    }
+                    else {
+                        $(this).removeClass("active");
+                    }
+                });
+            }
+        });
+
+        $(".clearformSearch").click(function myfunction() {
+            $("#txtKey").val("");
+            $(".formSearch .numfuond").html("");
+            if (count > 0) {
+                count = 0;
+                RemoveHighlight('highlighted');
+                $(".formSearch .numfuond").html('');
+            }
+            $("#txtKey").focus();
+            _keyCode = 0
+            _length = 0;
+        });
+
+        $(".searchClose").click(function myfunction() {
+            $(".menuBTSearch").hide();
+            $(".menuBT").show();
+            $(".formSearch .numfuond").html("");
+            if (count > 0) {
+                count = 0;
+                RemoveHighlight('highlighted');
+                $(".formSearch .numfuond").html('');
+            }
+            $("#txtKey").blur();
+            _keyCode = 0
+            _length = 0;
+
+            //hideTheKeyBoard();
+        });
+
+        function backTop() {
+            $('body,html').animate({ scrollTop: 0 }, 500);
+        }
+
+        function findText() {
+            $(".menuBTSearch").css("width", $(document).width() + "px!important");
+            $(".menuBTSearch").show();
+            $(".menuBT").hide();
+
+            //$(".formSearch").width($(document).width() - 125);
+            //$("#txtKey").width($(".formSearch").width() - 100);
+            $(".formSearch").css("width", "auto !important");
+            $("#txtKey").css("width", "auto !important");
+
+            $("#txtKey").val("");
+
+            $("#txtKey").focus();
+        }
+    </script>
+
     </body>
 </html>

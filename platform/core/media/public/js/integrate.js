@@ -94,11 +94,9 @@ var defaultConfig = {
     }]
   }
 };
-
 if (!MediaConfig.app_key || MediaConfig.app_key !== defaultConfig.app_key) {
   MediaConfig = defaultConfig;
 }
-
 MediaConfig.request_params.search = '';
 var RecentItems = $.parseJSON(localStorage.getItem('RecentItems')) || [];
 
@@ -116,27 +114,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Helpers": () => (/* binding */ Helpers)
 /* harmony export */ });
 /* harmony import */ var _Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Config/MediaConfig */ "./platform/core/media/resources/assets/js/App/Config/MediaConfig.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 var Helpers = /*#__PURE__*/function () {
   function Helpers() {
     _classCallCheck(this, Helpers);
   }
-
   _createClass(Helpers, null, [{
     key: "getUrlParam",
     value: function getUrlParam(paramName) {
       var url = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
       if (!url) {
         url = window.location.search;
       }
-
       var reParam = new RegExp('(?:[\?&]|&)' + paramName + '=([^&]+)', 'i');
       var match = url.match(reParam);
       return match && match.length > 1 ? match[1] : null;
@@ -147,13 +142,10 @@ var Helpers = /*#__PURE__*/function () {
       if (url.substring(0, 2) === '//' || url.substring(0, 7) === 'http://' || url.substring(0, 8) === 'https://') {
         return url;
       }
-
       var baseUrl = RV_MEDIA_URL.base_url.substr(-1, 1) !== '/' ? RV_MEDIA_URL.base_url + '/' : RV_MEDIA_URL.base_url;
-
       if (url.substring(0, 1) === '/') {
         return baseUrl + url.substring(1);
       }
-
       return baseUrl + url;
     }
   }, {
@@ -180,7 +172,6 @@ var Helpers = /*#__PURE__*/function () {
       if (typeof object === 'undefined') {
         object = null;
       }
-
       return JSON.stringify(object);
     }
   }, {
@@ -189,19 +180,15 @@ var Helpers = /*#__PURE__*/function () {
       if (!jsonString) {
         return defaultValue;
       }
-
       if (typeof jsonString === 'string') {
         var result;
-
         try {
           result = $.parseJSON(jsonString);
         } catch (err) {
           result = defaultValue;
         }
-
         return result;
       }
-
       return jsonString;
     }
   }, {
@@ -210,7 +197,6 @@ var Helpers = /*#__PURE__*/function () {
       if (window.rvMedia.options && window.rvMedia.options.open_in === 'modal') {
         return $.extend(true, _Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__.MediaConfig.request_params, window.rvMedia.options || {});
       }
-
       return _Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__.MediaConfig.request_params;
     }
   }, {
@@ -313,7 +299,6 @@ var Helpers = /*#__PURE__*/function () {
       };
     }
   }]);
-
   return Helpers;
 }();
 
@@ -332,12 +317,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Config/MediaConfig */ "./platform/core/media/resources/assets/js/App/Config/MediaConfig.js");
 /* harmony import */ var _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Helpers/Helpers */ "./platform/core/media/resources/assets/js/App/Helpers/Helpers.js");
 /* harmony import */ var _MessageService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MessageService */ "./platform/core/media/resources/assets/js/App/Services/MessageService.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 
 
@@ -345,14 +330,11 @@ var ActionsService = /*#__PURE__*/function () {
   function ActionsService() {
     _classCallCheck(this, ActionsService);
   }
-
   _createClass(ActionsService, null, [{
     key: "handleDropdown",
     value: function handleDropdown() {
       var selected = _.size(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedItems());
-
       ActionsService.renderActions();
-
       if (selected > 0) {
         $('.rv-dropdown-actions').removeClass('disabled');
       } else {
@@ -363,7 +345,6 @@ var ActionsService = /*#__PURE__*/function () {
     key: "handlePreview",
     value: function handlePreview() {
       var selected = [];
-
       _.each(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedFiles(), function (value) {
         if (value.preview_url) {
           selected.push({
@@ -373,7 +354,6 @@ var ActionsService = /*#__PURE__*/function () {
           _Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__.RecentItems.push(value.id);
         }
       });
-
       if (_.size(selected) > 0) {
         $.fancybox.open(selected);
         _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.storeRecentItems();
@@ -385,15 +365,12 @@ var ActionsService = /*#__PURE__*/function () {
     key: "handleCopyLink",
     value: function handleCopyLink() {
       var links = '';
-
       _.each(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedFiles(), function (value) {
         if (!_.isEmpty(links)) {
           links += '\n';
         }
-
         links += value.full_url;
       });
-
       var $clipboardTemp = $('.js-rv-clipboard-temp');
       $clipboardTemp.data('clipboard-text', links);
       new Clipboard('.js-rv-clipboard-temp', {
@@ -408,7 +385,6 @@ var ActionsService = /*#__PURE__*/function () {
     key: "handleGlobalAction",
     value: function handleGlobalAction(type, callback) {
       var selected = [];
-
       _.each(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedItems(), function (value) {
         selected.push({
           is_folder: value.is_folder,
@@ -416,51 +392,40 @@ var ActionsService = /*#__PURE__*/function () {
           full_url: value.full_url
         });
       });
-
       switch (type) {
         case 'rename':
           $('#modal_rename_items').modal('show').find('form.rv-form').data('action', type);
           break;
-
         case 'copy_link':
           ActionsService.handleCopyLink();
           break;
-
         case 'preview':
           ActionsService.handlePreview();
           break;
-
         case 'trash':
           $('#modal_trash_items').modal('show').find('form.rv-form').data('action', type);
           break;
-
         case 'delete':
           $('#modal_delete_items').modal('show').find('form.rv-form').data('action', type);
           break;
-
         case 'empty_trash':
           $('#modal_empty_trash').modal('show').find('form.rv-form').data('action', type);
           break;
-
         case 'download':
           var downloadLink = RV_MEDIA_URL.download;
           var count = 0;
-
           _.each(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedItems(), function (value) {
             if (!_.includes(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getConfigs().denied_download, value.mime_type)) {
               downloadLink += (count === 0 ? '?' : '&') + 'selected[' + count + '][is_folder]=' + value.is_folder + '&selected[' + count + '][id]=' + value.id;
               count++;
             }
           });
-
           if (downloadLink !== RV_MEDIA_URL.download) {
             window.open(downloadLink, '_blank');
           } else {
             _MessageService__WEBPACK_IMPORTED_MODULE_2__.MessageService.showMessage('error', RV_MEDIA_CONFIG.translations.download.error, RV_MEDIA_CONFIG.translations.message.error_header);
           }
-
           break;
-
         default:
           ActionsService.processAction({
             selected: selected,
@@ -483,13 +448,11 @@ var ActionsService = /*#__PURE__*/function () {
         },
         success: function success(res) {
           _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.resetPagination();
-
           if (!res.error) {
             _MessageService__WEBPACK_IMPORTED_MODULE_2__.MessageService.showMessage('success', res.message, RV_MEDIA_CONFIG.translations.message.success_header);
           } else {
             _MessageService__WEBPACK_IMPORTED_MODULE_2__.MessageService.showMessage('error', res.message, RV_MEDIA_CONFIG.translations.message.error_header);
           }
-
           if (callback) {
             callback(res);
           }
@@ -507,7 +470,6 @@ var ActionsService = /*#__PURE__*/function () {
     value: function renderRenameItems() {
       var VIEW = $('#rv_media_rename_item').html();
       var $itemsWrapper = $('#modal_rename_items .rename-items').empty();
-
       _.each(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedItems(), function (value) {
         var item = VIEW.replace(/__icon__/gi, value.icon || 'fa fa-file').replace(/__placeholder__/gi, 'Input file name').replace(/__value__/gi, value.name);
         var $item = $(item);
@@ -526,7 +488,6 @@ var ActionsService = /*#__PURE__*/function () {
       var $dropdownActions = $('.rv-dropdown-actions .dropdown-menu');
       $dropdownActions.empty();
       var actionsList = $.extend({}, true, _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getConfigs().actions_list);
-
       if (hasFolderSelected) {
         actionsList.basic = _.reject(actionsList.basic, function (item) {
           return item.action === 'preview';
@@ -534,13 +495,11 @@ var ActionsService = /*#__PURE__*/function () {
         actionsList.file = _.reject(actionsList.file, function (item) {
           return item.action === 'copy_link';
         });
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.create')) {
           actionsList.file = _.reject(actionsList.file, function (item) {
             return item.action === 'make_copy';
           });
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.edit')) {
           actionsList.file = _.reject(actionsList.file, function (item) {
             return _.includes(['rename'], item.action);
@@ -549,122 +508,97 @@ var ActionsService = /*#__PURE__*/function () {
             return _.includes(['rename'], item.action);
           });
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.trash')) {
           actionsList.other = _.reject(actionsList.other, function (item) {
             return _.includes(['trash', 'restore'], item.action);
           });
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.destroy')) {
           actionsList.other = _.reject(actionsList.other, function (item) {
             return _.includes(['delete'], item.action);
           });
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.favorite')) {
           actionsList.other = _.reject(actionsList.other, function (item) {
             return _.includes(['favorite', 'remove_favorite'], item.action);
           });
         }
       }
-
       var selectedFiles = _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedFiles();
-
       var canPreview = _.filter(selectedFiles, function (value) {
         return value.preview_url;
       }).length;
-
       if (!canPreview) {
         actionsList.basic = _.reject(actionsList.basic, function (item) {
           return item.action === 'preview';
         });
       }
-
       if (selectedFiles.length > 0) {
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.create')) {
           actionsList.file = _.reject(actionsList.file, function (item) {
             return item.action === 'make_copy';
           });
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.edit')) {
           actionsList.file = _.reject(actionsList.file, function (item) {
             return _.includes(['rename'], item.action);
           });
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.trash')) {
           actionsList.other = _.reject(actionsList.other, function (item) {
             return _.includes(['trash', 'restore'], item.action);
           });
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.destroy')) {
           actionsList.other = _.reject(actionsList.other, function (item) {
             return _.includes(['delete'], item.action);
           });
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.favorite')) {
           actionsList.other = _.reject(actionsList.other, function (item) {
             return _.includes(['favorite', 'remove_favorite'], item.action);
           });
         }
       }
-
       _.each(actionsList, function (action, key) {
         _.each(action, function (item, index) {
           var is_break = false;
-
           switch (_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getRequestParams().view_in) {
             case 'all_media':
               if (_.includes(['remove_favorite', 'delete', 'restore'], item.action)) {
                 is_break = true;
               }
-
               break;
-
             case 'recent':
               if (_.includes(['remove_favorite', 'delete', 'restore', 'make_copy'], item.action)) {
                 is_break = true;
               }
-
               break;
-
             case 'favorites':
               if (_.includes(['favorite', 'delete', 'restore', 'make_copy'], item.action)) {
                 is_break = true;
               }
-
               break;
-
             case 'trash':
               if (!_.includes(['preview', 'delete', 'restore', 'rename', 'download'], item.action)) {
                 is_break = true;
               }
-
               break;
           }
-
           if (!is_break) {
             var template = ACTION_TEMPLATE.replace(/__action__/gi, item.action || '').replace(/__icon__/gi, item.icon || '').replace(/__name__/gi, RV_MEDIA_CONFIG.translations.actions_list[key][item.action] || item.name);
-
             if (!index && initializedItem) {
               template = '<li role="separator" class="divider"></li>' + template;
             }
-
             $dropdownActions.append(template);
           }
         });
-
         if (action.length > 0) {
           initializedItem++;
         }
       });
     }
   }]);
-
   return ActionsService;
 }();
 
@@ -682,19 +616,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ActionsService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ActionsService */ "./platform/core/media/resources/assets/js/App/Services/ActionsService.js");
 /* harmony import */ var _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Helpers/Helpers */ "./platform/core/media/resources/assets/js/App/Helpers/Helpers.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 
 var ContextMenuService = /*#__PURE__*/function () {
   function ContextMenuService() {
     _classCallCheck(this, ContextMenuService);
   }
-
   _createClass(ContextMenuService, null, [{
     key: "initContext",
     value: function initContext() {
@@ -732,7 +665,6 @@ var ContextMenuService = /*#__PURE__*/function () {
           }
         }
       };
-
       _.each(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getConfigs().actions_list, function (actionGroup, key) {
         _.each(actionGroup, function (value) {
           items[value.action] = {
@@ -747,22 +679,17 @@ var ContextMenuService = /*#__PURE__*/function () {
           };
         });
       });
-
       var except = [];
-
       switch (_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getRequestParams().view_in) {
         case 'all_media':
           except = ['remove_favorite', 'delete', 'restore'];
           break;
-
         case 'recent':
           except = ['remove_favorite', 'delete', 'restore', 'make_copy'];
           break;
-
         case 'favorites':
           except = ['favorite', 'delete', 'restore', 'make_copy'];
           break;
-
         case 'trash':
           items = {
             preview: items.preview,
@@ -773,81 +700,63 @@ var ContextMenuService = /*#__PURE__*/function () {
           };
           break;
       }
-
       _.each(except, function (value) {
         items[value] = undefined;
       });
-
       var hasFolderSelected = _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedFolder().length > 0;
-
       if (hasFolderSelected) {
         items.preview = undefined;
         items.copy_link = undefined;
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.create')) {
           items.make_copy = undefined;
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.edit')) {
           items.rename = undefined;
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.trash')) {
           items.trash = undefined;
           items.restore = undefined;
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.destroy')) {
           items["delete"] = undefined;
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.favorite')) {
           items.favorite = undefined;
           items.remove_favorite = undefined;
         }
       }
-
       var selectedFiles = _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedFiles();
-
       if (selectedFiles.length > 0) {
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.create')) {
           items.make_copy = undefined;
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.edit')) {
           items.rename = undefined;
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.trash')) {
           items.trash = undefined;
           items.restore = undefined;
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.destroy')) {
           items["delete"] = undefined;
         }
-
         if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.favorite')) {
           items.favorite = undefined;
           items.remove_favorite = undefined;
         }
       }
-
       var canPreview = _.filter(selectedFiles, function (value) {
         return value.preview_url;
       }).length;
-
       if (!canPreview) {
         items.preview = undefined;
       }
-
       return items;
     }
   }, {
     key: "_folderContextMenu",
     value: function _folderContextMenu() {
       var items = ContextMenuService._fileContextMenu();
-
       items.preview = undefined;
       items.copy_link = undefined;
       return items;
@@ -860,7 +769,6 @@ var ContextMenuService = /*#__PURE__*/function () {
       }
     }
   }]);
-
   return ContextMenuService;
 }();
 
@@ -876,17 +784,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MessageService": () => (/* binding */ MessageService)
 /* harmony export */ });
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var MessageService = /*#__PURE__*/function () {
   function MessageService() {
     _classCallCheck(this, MessageService);
   }
-
   _createClass(MessageService, null, [{
     key: "showMessage",
     value: function showMessage(type, message) {
@@ -905,17 +812,14 @@ var MessageService = /*#__PURE__*/function () {
         hideMethod: 'fadeOut'
       };
       var messageHeader = '';
-
       switch (type) {
         case 'error':
           messageHeader = RV_MEDIA_CONFIG.translations.message.error_header;
           break;
-
         case 'success':
           messageHeader = RV_MEDIA_CONFIG.translations.message.success_header;
           break;
       }
-
       toastr[type](message, messageHeader);
     }
   }, {
@@ -957,7 +861,6 @@ var MessageService = /*#__PURE__*/function () {
       MessageService.showMessage('error', message);
     }
   }]);
-
   return MessageService;
 }();
 
@@ -1032,12 +935,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App/Helpers/Helpers */ "./platform/core/media/resources/assets/js/App/Helpers/Helpers.js");
 /* harmony import */ var _App_Config_MediaConfig__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App/Config/MediaConfig */ "./platform/core/media/resources/assets/js/App/Config/MediaConfig.js");
 /* harmony import */ var _App_Services_ContextMenuService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App/Services/ContextMenuService */ "./platform/core/media/resources/assets/js/App/Services/ContextMenuService.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 
 
@@ -1045,31 +948,25 @@ var EditorService = /*#__PURE__*/function () {
   function EditorService() {
     _classCallCheck(this, EditorService);
   }
-
   _createClass(EditorService, null, [{
     key: "editorSelectFile",
     value: function editorSelectFile(selectedFiles) {
       var is_ckeditor = _App_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers.getUrlParam('CKEditor') || _App_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers.getUrlParam('CKEditorFuncNum');
-
       if (window.opener && is_ckeditor) {
         var firstItem = _.first(selectedFiles);
-
         window.opener.CKEDITOR.tools.callFunction(_App_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers.getUrlParam('CKEditorFuncNum'), firstItem.full_url);
-
         if (window.opener) {
           window.close();
         }
-      } else {// No WYSIWYG editor found, use custom method.
+      } else {
+        // No WYSIWYG editor found, use custom method.
       }
     }
   }]);
-
   return EditorService;
 }();
-
 var rvMedia = /*#__PURE__*/_createClass(function rvMedia(selector, options) {
   _classCallCheck(this, rvMedia);
-
   window.rvMedia = window.rvMedia || {};
   var $body = $('body');
   var defaultOptions = {
@@ -1078,7 +975,6 @@ var rvMedia = /*#__PURE__*/_createClass(function rvMedia(selector, options) {
     onSelectFiles: function onSelectFiles(files, $el) {}
   };
   options = $.extend(true, defaultOptions, options);
-
   var clickCallback = function clickCallback(event) {
     event.preventDefault();
     var $current = $(event.currentTarget);
@@ -1089,31 +985,25 @@ var rvMedia = /*#__PURE__*/_createClass(function rvMedia(selector, options) {
     _App_Config_MediaConfig__WEBPACK_IMPORTED_MODULE_1__.MediaConfig.request_params.filter = 'everything';
     _App_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers.storeConfig();
     var elementOptions = window.rvMedia.$el.data('rv-media');
-
     if (typeof elementOptions !== 'undefined' && elementOptions.length > 0) {
       elementOptions = elementOptions[0];
       window.rvMedia.options = $.extend(true, window.rvMedia.options, elementOptions || {});
-
       if (typeof elementOptions.selected_file_id !== 'undefined') {
         window.rvMedia.options.is_popup = true;
       } else if (typeof window.rvMedia.options.is_popup !== 'undefined') {
         window.rvMedia.options.is_popup = undefined;
       }
     }
-
     if ($('#rv_media_body .rv-media-container').length === 0) {
       $('#rv_media_body').load(RV_MEDIA_URL.popup, function (data) {
         if (data.error) {
           alert(data.message);
         }
-
         $('#rv_media_body').removeClass('media-modal-loading').closest('.modal-content').removeClass('bb-loading');
         $(document).find('.rv-media-container .js-change-action[data-type=refresh]').trigger('click');
-
         if (_App_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers.getRequestParams().filter !== 'everything') {
           $('.rv-media-actions .btn.js-rv-media-change-filter-group.js-filter-by-type').hide();
         }
-
         _App_Services_ContextMenuService__WEBPACK_IMPORTED_MODULE_2__.ContextMenuService.destroyContext();
         _App_Services_ContextMenuService__WEBPACK_IMPORTED_MODULE_2__.ContextMenuService.initContext();
       });
@@ -1121,24 +1011,20 @@ var rvMedia = /*#__PURE__*/_createClass(function rvMedia(selector, options) {
       $(document).find('.rv-media-container .js-change-action[data-type=refresh]').trigger('click');
     }
   };
-
   if (typeof selector === 'string') {
     $body.off('click', selector).on('click', selector, clickCallback);
   } else {
     selector.off('click').on('click', clickCallback);
   }
 });
-
 window.RvMediaStandAlone = rvMedia;
 $('.js-insert-to-editor').off('click').on('click', function (event) {
   event.preventDefault();
   var selectedFiles = _App_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers.getSelectedFiles();
-
   if (_.size(selectedFiles) > 0) {
     EditorService.editorSelectFile(selectedFiles);
   }
 });
-
 $.fn.rvMedia = function (options) {
   var $selector = $(this);
   _App_Config_MediaConfig__WEBPACK_IMPORTED_MODULE_1__.MediaConfig.request_params.filter = 'everything';
