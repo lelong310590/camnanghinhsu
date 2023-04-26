@@ -27,4 +27,5 @@ return [
     'author' => 'Tác giả',
     'categories' => 'Danh mục',
     'category' => 'Danh mục',
+    'is_featured' => 'Nổi bật'
 ];
