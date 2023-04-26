@@ -4,6 +4,7 @@ namespace Botble\Blog\Tables;
 
 use BaseHelper;
 use Botble\Base\Enums\BaseStatusEnum;
+use Botble\Blog\Enums\PostFeaturedEnum;
 use Botble\Blog\Exports\PostExport;
 use Botble\Blog\Repositories\Interfaces\CategoryInterface;
 use Botble\Blog\Repositories\Interfaces\PostInterface;
@@ -99,6 +100,9 @@ class PostTable extends TableAbstract
             ->editColumn('author_id', function ($item) {
                 return $item->author && $item->author->name ? BaseHelper::clean($item->author->name) : '&mdash;';
             })
+            ->editColumn('is_featured', function ($item) {
+                return $item->is_featured;
+            })
             ->editColumn('status', function ($item) {
                 if ($this->request()->input('action') === 'excel') {
                     return $item->status->getValue();
@@ -134,6 +138,7 @@ class PostTable extends TableAbstract
                 'updated_at',
                 'author_id',
                 'author_type',
+                'is_featured'
             ]);
 
         return $this->applyScopes($query);
@@ -167,6 +172,12 @@ class PostTable extends TableAbstract
                 'title'     => trans('plugins/blog::posts.author'),
                 'width'     => '150px',
                 'class'     => 'no-sort text-center',
+                'orderable' => false,
+            ],
+            'is_featured'  => [
+                'title'     => trans('core/base::forms.is_featured'),
+                'width'     => '100px',
+                'class'     => 'text-center',
                 'orderable' => false,
             ],
             'created_at' => [
@@ -214,6 +225,12 @@ class PostTable extends TableAbstract
                 'type'     => 'customSelect',
                 'choices'  => BaseStatusEnum::labels(),
                 'validate' => 'required|in:' . implode(',', BaseStatusEnum::values()),
+            ],
+            'is_featured'     => [
+                'title'    => trans('core/base::forms.is_featured'),
+                'type'     => 'customSelect',
+                'choices'  => PostFeaturedEnum::labels(),
+                'validate' => 'required|in:' . implode(',', PostFeaturedEnum::values()),
             ],
             'category'   => [
                 'title'    => trans('plugins/blog::posts.category'),
