@@ -1985,6 +1985,10 @@ input.qty-input[type=number] {
     }
 }
 
+.page-content {
+    overflow-x: hidden;
+}
+
 .header-right {
     .panel--search-result {
         left: -2px;
@@ -2019,6 +2023,7 @@ input.qty-input[type=number] {
     height: 50px;
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     border-top: 1px solid #b9b9b9;
     background: #fff;
