@@ -154,10 +154,10 @@ class PostTable extends TableAbstract
                 'title' => trans('core/base::tables.id'),
                 'width' => '20px',
             ],
-            'image'      => [
-                'title' => trans('core/base::tables.image'),
-                'width' => '70px',
-            ],
+//            'image'      => [
+//                'title' => trans('core/base::tables.image'),
+//                'width' => '70px',
+//            ],
             'name'       => [
                 'title' => trans('core/base::tables.name'),
                 'class' => 'text-start',
@@ -168,15 +168,15 @@ class PostTable extends TableAbstract
                 'class'     => 'no-sort text-center',
                 'orderable' => false,
             ],
-            'author_id'  => [
-                'title'     => trans('plugins/blog::posts.author'),
-                'width'     => '150px',
-                'class'     => 'no-sort text-center',
-                'orderable' => false,
-            ],
+//            'author_id'  => [
+//                'title'     => trans('plugins/blog::posts.author'),
+//                'width'     => '150px',
+//                'class'     => 'no-sort text-center',
+//                'orderable' => false,
+//            ],
             'is_featured'  => [
                 'title'     => trans('core/base::forms.is_featured'),
-                'width'     => '100px',
+                'width'     => '50px',
                 'class'     => 'text-center',
                 'orderable' => false,
             ],

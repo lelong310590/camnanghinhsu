@@ -114,7 +114,10 @@
     <script type="text/javascript">
         function fSizeUp() {
             var cf = parseInt($(".fSize").attr("fValue")) + 2;
-            $(".MainContent *").css("font-size", "" + cf + "px");
+            $(".MainContent *").css({
+                fontSize : cf+"px",
+                lineHeight: 1.5
+            });
             $(".fSize").attr("fValue", cf);
             $(".fSize").html(cf - 2);
             setCookie("fSize", cf, 7);
@@ -342,6 +345,10 @@
         function backTop() {
             $('body,html').animate({ scrollTop: 0 }, 500);
         }
+
+        $('#txtKey').focus(function () {
+            $(this)[0].scrollIntoView(false);
+        })
 
         function findText() {
             $(".menuBTSearch").css("width", $(document).width() + "px!important");
