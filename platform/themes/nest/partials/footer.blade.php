@@ -346,18 +346,18 @@
             $('body,html').animate({ scrollTop: 0 }, 500);
         }
 
-        $('#txtKey').focus(function () {
-            window.visualViewport.addEventListener("resize", resizeHandler);
-        })
-
-        function resizeHandler() {
-            let height = window.visualViewport.height;
-            const viewport = window.visualViewport;
-            if (!/iPhone|iPad|iPod/.test(window.navigator.userAgent)) {
-                height = viewport.height;
-            }
-            $('#txtKey').style.bottom = `${height - viewport.height}px`;
-        }
+        // $('#txtKey').focus(function () {
+        //     window.visualViewport.addEventListener("resize", resizeHandler);
+        // })
+        //
+        // function resizeHandler() {
+        //     let height = window.visualViewport.height;
+        //     const viewport = window.visualViewport;
+        //     if (!/iPhone|iPad|iPod/.test(window.navigator.userAgent)) {
+        //         height = viewport.height;
+        //     }
+        //     $('#txtKey').style.bottom = `${height - viewport.height}px`;
+        // }
 
         function findText() {
             $(".menuBTSearch").css("width", $(document).width() + "px!important");
