@@ -347,8 +347,17 @@
         }
 
         $('#txtKey').focus(function () {
-            $(this)[0].scrollIntoView(false);
+            window.visualViewport.addEventListener("resize", resizeHandler);
         })
+
+        function resizeHandler() {
+            let height = window.visualViewport.height;
+            const viewport = window.visualViewport;
+            if (!/iPhone|iPad|iPod/.test(window.navigator.userAgent)) {
+                height = viewport.height;
+            }
+            $('#txtKey').style.bottom = `${height - viewport.height}px`;
+        }
 
         function findText() {
             $(".menuBTSearch").css("width", $(document).width() + "px!important");
