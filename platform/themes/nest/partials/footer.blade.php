@@ -227,7 +227,6 @@
                 }
                 else if (_length !== $('#txtKey').val().length) {
                     _length = $('#txtKey').val().length;
-
                     if ($('#txtKey').val() === "") {
                         if (count > 0) {
                             count = 0;
@@ -236,7 +235,6 @@
                         }
                     }
                     else {
-
                         _index = 0;
                         count = searchAndHighlight($('#txtKey').val(), '.MainContent', 'highlighted', true);
                         count = $(".MainContent .highlighted").length;
@@ -255,24 +253,17 @@
                             }
                         });
                     }
-
                 }
             }
-
         });
 
         $(".searchUp").click(function myfunction() {
             $("#txtKey").focus();
             if (count > 0) {
-
                 _index = _index - 1;
-
                 if (_index < 0) {
                     _index = count - 1;
                 }
-
-
-
                 $(".MainContent .highlighted").each(function (index) {
                     var topHL = $(this);
                     if (_index == index) {
