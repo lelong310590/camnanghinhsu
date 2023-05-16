@@ -2025,12 +2025,14 @@ input.qty-input[type=number] {
     top: 0;
     left: 0;
     width: 100%;
-    border-top: 1px solid #b9b9b9;
+    border-bottom: 1px solid #b9b9b9;
     background: #fff;
     max-width: 768px !important;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    -webkit-transform: translateZ(0);
+    z-index: 999;
 }
 
 .menuBT a {
