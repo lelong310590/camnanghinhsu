@@ -1,3 +1,10 @@
+<div class="menuBTSearch" style="display: none;">
+    <a class="searchUp"><i class="fas fa-chevron-up"></i></a>
+    <a class="searchDown"><i class="fas fa-chevron-down"></i></a>
+    <span class="formSearch"><i class="fa fa-search"></i> <input id="txtKey" type="text"> <i class="fa fa-times-circle clearformSearch"></i> <span class="numfuond"></span></span>
+    <a class="searchClose"><i class="fas fa-times"></i></a>
+</div>
+
 @php
     $layout = MetaBox::getMetaData($post, 'layout', true);
     $layout = ($layout && in_array($layout, array_keys(get_blog_single_layouts()))) ? $layout : 'blog-post-right-sidebar';
@@ -55,26 +62,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="menuBT d-flex">
-        <div class="d-flex align-items-center">
-            <a class="fSizeDown" onclick="fSizeDown()"><i class="fas fa-font" style="font-size: 16px!important;"></i>-</a>
-            <a class="fSize" fvalue="16">14</a>
-            <a class="fSizeUp" onclick="fSizeUp()"><i class="fas fa-font"></i>+</a>
-        </div>
-
-        <div class="d-flex align-items-center">
-            <a class="findText" onclick="findText()"><i class="fas fa-search" style="font-size: 24px;"></i></a>
-            <a class="backTop" onclick="backTop()"><i class="fas fa-arrow-circle-up" style="font-size: 24px;"></i></a>
-        </div>
-    </div>
-
-    <div class="menuBTSearch" style="display: none;">
-        <a class="searchUp"><i class="fas fa-chevron-up"></i></a>
-        <a class="searchDown"><i class="fas fa-chevron-down"></i></a>
-        <span class="formSearch"><i class="fa fa-search"></i> <input id="txtKey" type="text"> <i class="fa fa-times-circle clearformSearch"></i> <span class="numfuond"></span></span>
-        <a class="searchClose"><i class="fas fa-times"></i></a>
     </div>
 @endif
 {{--
