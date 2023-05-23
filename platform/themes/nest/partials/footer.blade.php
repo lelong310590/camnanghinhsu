@@ -202,41 +202,62 @@
         let _index = 0;
         let _length = 0;
 
-        function txtKeyUp(keyword) {
-            _length = keyword.length;
-            if (keyword === "") {
-                if (count > 0) {
-                    count = 0;
-                    RemoveHighlight('highlighted');
-                    $(".formSearch .numfuond").html('');
-                }
+        $("#txtKey").keyup(function myfunction(event) {
+            if (event.keyCode === 231) {
+                _keyCode = event.keyCode;
+            }
+            else if (event.keyCode === 8 && (_keyCode === 231 || _keyCode === 239)) {
+                _keyCode = _keyCode + event.keyCode;
             }
             else {
-                _index = 0;
-                count = searchAndHighlight(keyword, '.MainContent', 'highlighted', true);
-                count = $(".MainContent .highlighted").length;
-                if (count > 0)
-                    $(".formSearch .numfuond").html("1/" + count);
-                else
-                    $(".formSearch .numfuond").html(count);
-
-                $(".MainContent .highlighted").each(function (index) {
-                    if (_index === index) {
-                        var topHL = $(this);
-                        $(this).addClass("active");
-                        var targetOffset = topHL.offset().top - 100;
-                        $('html,body').animate({ scrollTop: targetOffset }, 500);
-                        return false;
+                _keyCode = 0;
+                if (event.keyCode === 13) {
+                    $("#txtKey").blur();
+                    document.activeElement.blur();
+                    if ($('#txtKey').val() === "") {
+                        if (count > 0) {
+                            count = 0;
+                            RemoveHighlight('highlighted');
+                            $(".formSearch .numfuond").html('');
+                        }
                     }
-                });
+                }
+                else if (event.keyCode === 32) {
+
+                }
+                else if (_length !== $('#txtKey').val().length) {
+                    _length = $('#txtKey').val().length;
+                    if ($('#txtKey').val() === "") {
+                        if (count > 0) {
+                            count = 0;
+                            RemoveHighlight('highlighted');
+                            $(".formSearch .numfuond").html('');
+                        }
+                    }
+                    else {
+                        _index = 0;
+                        count = searchAndHighlight($('#txtKey').val(), '.MainContent', 'highlighted', true);
+                        count = $(".MainContent .highlighted").length;
+                        if (count > 0)
+                            $(".formSearch .numfuond").html("1/" + count);
+                        else
+                            $(".formSearch .numfuond").html(count);
+
+                        $(".MainContent .highlighted").each(function (index) {
+                            if (_index === index) {
+                                var topHL = $(this);
+                                $(this).addClass("active");
+                                var targetOffset = topHL.offset().top - 100;
+                                $('html,body').animate({ scrollTop: targetOffset }, 500);
+                                return false;
+                            }
+                        });
+                    }
+                }
             }
-        }
-
-        $("#txtKey").keyup(function myfunction(event) {
-
         });
 
-        function searchUp() {
+        $(".searchUp").click(function myfunction() {
             $("#txtKey").focus();
             if (count > 0) {
                 _index = _index - 1;
@@ -257,9 +278,9 @@
                     }
                 });
             }
-        }
+        });
 
-        function searchDown() {
+        $(".searchDown").click(function myfunction() {
             $("#txtKey").focus();
             if (count > 0) {
                 _index = _index + 1;
@@ -280,7 +301,7 @@
                     }
                 });
             }
-        }
+        });
 
         $(".clearformSearch").click(function myfunction() {
             $("#txtKey").val("");
