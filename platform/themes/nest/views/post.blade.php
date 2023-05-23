@@ -29,11 +29,11 @@
 {{--                </div>--}}
 {{--            </div>--}}
 {{--        </div>--}}
-        @if ($post->image)
-            <figure class="single-thumbnail">
-                <img src="{{ RvMedia::getImageUrl($post->image) }}" alt="{{ $post->name }}">
-            </figure>
-        @endif
+{{--        @if ($post->image)--}}
+{{--            <figure class="single-thumbnail">--}}
+{{--                <img src="{{ RvMedia::getImageUrl($post->image) }}" alt="{{ $post->name }}">--}}
+{{--            </figure>--}}
+{{--        @endif--}}
         <div class="single-content">
             <div class="row">
                 <div class="col-lg-12 m-auto">
