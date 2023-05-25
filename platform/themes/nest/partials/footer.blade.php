@@ -365,5 +365,100 @@
         }
     </script>
 
+
+    <script type="text/javascript">
+        //Script for flutter
+
+        function flutterFontSizeUp() {
+            var cf = parseInt($(".fSize").attr("fValue")) + 2;
+            $(".MainContent *").css({
+                fontSize : cf+"px",
+                lineHeight: 1.5
+            });
+            $(".fSize").attr("fValue", cf);
+            $(".fSize").html(cf - 2);
+            setCookie("fSize", cf, 7);
+            return cf
+        }
+
+        function flutterFontSizeDown() {
+            var cf = parseInt($(".fSize").attr("fValue")) - 2;
+            $(".MainContent *").css("font-size", "" + cf + "px");
+            $(".fSize").attr("fValue", cf);
+            $(".fSize").html(cf - 2);
+            setCookie("fSize", cf, 7);
+            return cf
+        }
+
+        function flutterSearchDown() {
+            $("#txtKey").focus();
+            if (count > 0) {
+                _index = _index + 1;
+                if (_index == count) {
+                    _index = 0;
+                }
+                $(".MainContent .highlighted").each(function (index) {
+                    var topHL = $(this);
+                    if (_index == index) {
+
+                        $(this).addClass("active");
+                        var targetOffset = topHL.offset().top - 100;
+                        $('html,body').animate({ scrollTop: targetOffset }, 500);
+                        $(".formSearch .numfuond").html(_index + 1 + "/" + count);
+                    }
+                    else {
+                        $(this).removeClass("active");
+                    }
+                });
+            }
+        }
+
+        function flutterSearchUp() {
+            $("#txtKey").focus();
+            if (count > 0) {
+                _index = _index - 1;
+                if (_index < 0) {
+                    _index = count - 1;
+                }
+                $(".MainContent .highlighted").each(function (index) {
+                    var topHL = $(this);
+                    if (_index == index) {
+
+                        $(this).addClass("active");
+                        var targetOffset = topHL.offset().top - 100;
+                        $('html,body').animate({ scrollTop: targetOffset }, 500);
+                        $(".formSearch .numfuond").html(_index + 1 + "/" + count);
+                    }
+                    else {
+                        $(this).removeClass("active");
+                    }
+                });
+            }
+        }
+
+        function flutterSearch(keyword) {
+            _index = 0;
+            count = searchAndHighlight(keyword, '.MainContent', 'highlighted', true);
+            count = $(".MainContent .highlighted").length;
+            if (count > 0)
+                $(".formSearch .numfuond").html("1/" + count);
+            else
+                $(".formSearch .numfuond").html(count);
+
+            $(".MainContent .highlighted").each(function (index) {
+                if (_index === index) {
+                    var topHL = $(this);
+                    $(this).addClass("active");
+                    var targetOffset = topHL.offset().top - 100;
+                    $('html,body').animate({ scrollTop: targetOffset }, 500);
+                    return false;
+                }
+            });
+
+            return count
+        }
+
+    </script>
+
     </body>
 </html>
