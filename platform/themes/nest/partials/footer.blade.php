@@ -377,7 +377,6 @@
             });
             $(".fSize").attr("fValue", cf);
             $(".fSize").html(cf - 2);
-            setCookie("fSize", cf, 7);
             return cf
         }
 
@@ -386,7 +385,6 @@
             $(".MainContent *").css("font-size", "" + cf + "px");
             $(".fSize").attr("fValue", cf);
             $(".fSize").html(cf - 2);
-            setCookie("fSize", cf, 7);
             return cf
         }
 
