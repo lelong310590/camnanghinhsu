@@ -16,6 +16,7 @@ class AddTypeToMemberTable extends Migration
         Schema::table('members', function (Blueprint $table) {
             //
             $table->tinyInteger('type')->default(0)->comment('0 = normal, 1 = paid');
+            $table->integer('number_logged_in')->default(0)->nullable();
         });
     }
 
@@ -29,6 +30,7 @@ class AddTypeToMemberTable extends Migration
         Schema::table('members', function (Blueprint $table) {
             //
             $table->dropColumn('type');
+            $table->dropColumn('number_logged_in');
         });
     }
 }

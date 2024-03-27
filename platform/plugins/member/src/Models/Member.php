@@ -40,7 +40,8 @@ class Member extends Authenticatable
         'phone',
         'description',
         'gender',
-        'type'
+        'type',
+        'number_logged_in'
     ];
 
     /**
