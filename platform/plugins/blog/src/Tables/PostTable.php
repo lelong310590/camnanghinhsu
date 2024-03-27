@@ -100,7 +100,10 @@ class PostTable extends TableAbstract
             ->editColumn('author_id', function ($item) {
                 return $item->author && $item->author->name ? BaseHelper::clean($item->author->name) : '&mdash;';
             })
-            ->editColumn('is_featured', function ($item) {
+            ->editColumn('view', function ($item) {
+                return $item->view;
+            })
+			->editColumn('is_featured', function ($item) {
                 return $item->is_featured;
             })
             ->editColumn('status', function ($item) {
@@ -135,6 +138,7 @@ class PostTable extends TableAbstract
                 'image',
                 'created_at',
                 'status',
+                'view',
                 'updated_at',
                 'author_id',
                 'author_type',
@@ -178,6 +182,12 @@ class PostTable extends TableAbstract
                 'title'     => trans('core/base::forms.is_featured'),
                 'width'     => '50px',
                 'class'     => 'text-center',
+                'orderable' => false,
+            ],
+            'view'  => [
+                'title'     => trans('plugins/blog::posts.view'),
+                'width'     => '50px',
+                'class'     => 'no-sort text-center',
                 'orderable' => false,
             ],
             'created_at' => [

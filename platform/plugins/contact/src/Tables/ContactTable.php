@@ -72,6 +72,9 @@ class ContactTable extends TableAbstract
             ->editColumn('status', function ($item) {
                 return $item->status->toHtml();
             })
+            ->editColumn('type', function ($item) {
+                return $item->type;
+            })
             ->addColumn('operations', function ($item) {
                 return $this->getOperations('contacts.edit', 'contacts.destroy', $item);
             });
@@ -89,6 +92,7 @@ class ContactTable extends TableAbstract
             'name',
             'phone',
             'email',
+            'type',
             'created_at',
             'status',
         ]);
@@ -123,6 +127,10 @@ class ContactTable extends TableAbstract
             ],
             'status'    => [
                 'title' => trans('core/base::tables.status'),
+                'width' => '100px',
+            ],
+            'type'    => [
+                'title' => 'Kiểu',
                 'width' => '100px',
             ],
         ];

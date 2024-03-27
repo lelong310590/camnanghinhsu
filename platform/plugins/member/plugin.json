@@ -1,0 +1,9 @@
+{
+  "name": "Member",
+  "namespace": "Botble\\Member\\",
+  "provider": "Botble\\Member\\Providers\\MemberServiceProvider",
+  "author": "Alusoft CMS",
+  "url": "https://alusoft.com",
+  "version": "5.8",
+  "description": "Manage member, user register/login"
+}
