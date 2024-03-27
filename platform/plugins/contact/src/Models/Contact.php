@@ -45,6 +45,9 @@ class Contact extends BaseModel
         'main',
         'type',
         'status',
+        'user_id',
+        'org',
+        'telegram'
     ];
 
     /**

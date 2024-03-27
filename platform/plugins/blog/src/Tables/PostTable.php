@@ -99,6 +99,9 @@ class PostTable extends TableAbstract
             ->editColumn('author_id', function ($item) {
                 return $item->author && $item->author->name ? BaseHelper::clean($item->author->name) : '&mdash;';
             })
+            ->editColumn('view', function ($item) {
+                return $item->view;
+            })
             ->editColumn('status', function ($item) {
                 if ($this->request()->input('action') === 'excel') {
                     return $item->status->getValue();
@@ -131,6 +134,7 @@ class PostTable extends TableAbstract
                 'image',
                 'created_at',
                 'status',
+                'view',
                 'updated_at',
                 'author_id',
                 'author_type',
@@ -166,6 +170,12 @@ class PostTable extends TableAbstract
             'author_id'  => [
                 'title'     => trans('plugins/blog::posts.author'),
                 'width'     => '150px',
+                'class'     => 'no-sort text-center',
+                'orderable' => false,
+            ],
+            'view'  => [
+                'title'     => trans('plugins/blog::posts.view'),
+                'width'     => '50px',
                 'class'     => 'no-sort text-center',
                 'orderable' => false,
             ],
