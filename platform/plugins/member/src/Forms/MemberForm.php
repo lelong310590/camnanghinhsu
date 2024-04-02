@@ -45,6 +45,21 @@ class MemberForm extends FormAbstract
                     'data-counter' => 60,
                 ],
             ])
+            ->add('phone', 'text', [
+                'label'      => trans('plugins/member::member.form.phone'),
+                'label_attr' => ['class' => 'control-label required'],
+                'attr'       => [
+                    'data-counter' => 10,
+                ],
+            ])
+            ->add('type', 'customSelect', [ // Change "select" to "customSelect" for better UI
+                'label' => __('plugins/member::member.form.phone'),
+                'label_attr' => ['class' => 'control-label required'], // Add class "required" if that is mandatory field
+                'choices'    => [
+                    0 => __('Miên phí'),
+                    1 => __('Trả phí'),
+                ],
+            ])
             ->add('is_change_password', 'checkbox', [
                 'label'      => trans('plugins/member::member.form.change_password'),
                 'label_attr' => ['class' => 'control-label'],
