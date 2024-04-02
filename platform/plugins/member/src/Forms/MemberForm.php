@@ -60,6 +60,15 @@ class MemberForm extends FormAbstract
                     1 => __('Trả phí'),
                 ],
             ])
+            ->add('vip_expires_at', 'text', [
+                'label' => 'Thời hạn VIP',
+                'label_attr' => ['class' => 'control-label'],
+                'attr' => [
+                    'class' => 'form-control datepicker',
+                    'data-date-format' => 'yyyy/mm/dd',
+                ],
+                'default_value' => now(config('app.timezone'))->format('Y/m/d'),
+            ])
             ->add('is_change_password', 'checkbox', [
                 'label'      => trans('plugins/member::member.form.change_password'),
                 'label_attr' => ['class' => 'control-label'],
