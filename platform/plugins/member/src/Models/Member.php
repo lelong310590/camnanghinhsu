@@ -41,7 +41,8 @@ class Member extends Authenticatable
         'description',
         'gender',
         'type',
-        'number_logged_in'
+        'number_logged_in',
+        'vip_expires_at'
     ];
 
     /**
