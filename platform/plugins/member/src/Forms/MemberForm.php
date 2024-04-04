@@ -23,7 +23,7 @@ class MemberForm extends FormAbstract
             ->withCustomFields()
             ->add('first_name', 'text', [
                 'label'      => trans('plugins/member::member.first_name'),
-                'label_attr' => ['class' => 'control-label required'],
+                'label_attr' => ['class' => 'control-label'],
                 'attr'       => [
                     'placeholder'  => trans('core/base::forms.name_placeholder'),
                     'data-counter' => 120,
@@ -31,7 +31,7 @@ class MemberForm extends FormAbstract
             ])
             ->add('last_name', 'text', [
                 'label'      => trans('plugins/member::member.last_name'),
-                'label_attr' => ['class' => 'control-label required'],
+                'label_attr' => ['class' => 'control-label'],
                 'attr'       => [
                     'placeholder'  => trans('core/base::forms.name_placeholder'),
                     'data-counter' => 120,
@@ -39,7 +39,7 @@ class MemberForm extends FormAbstract
             ])
             ->add('email', 'text', [
                 'label'      => trans('plugins/member::member.form.email'),
-                'label_attr' => ['class' => 'control-label required'],
+                'label_attr' => ['class' => 'control-label'],
                 'attr'       => [
                     'placeholder'  => trans('plugins/member::member.email_placeholder'),
                     'data-counter' => 60,
@@ -52,14 +52,14 @@ class MemberForm extends FormAbstract
                     'data-counter' => 10,
                 ],
             ])
-            ->add('type', 'customSelect', [ // Change "select" to "customSelect" for better UI
-                'label' => __('plugins/member::member.form.phone'),
-                'label_attr' => ['class' => 'control-label required'], // Add class "required" if that is mandatory field
-                'choices'    => [
-                    0 => __('Miên phí'),
-                    1 => __('Trả phí'),
-                ],
-            ])
+//            ->add('type', 'customSelect', [ // Change "select" to "customSelect" for better UI
+//                'label' => __('plugins/member::member.form.phone'),
+//                'label_attr' => ['class' => 'control-label required'], // Add class "required" if that is mandatory field
+//                'choices'    => [
+//                    0 => __('Miên phí'),
+//                    1 => __('Trả phí'),
+//                ],
+//            ])
             ->add('vip_expires_at', 'text', [
                 'label' => 'Thời hạn VIP',
                 'label_attr' => ['class' => 'control-label'],
@@ -79,7 +79,7 @@ class MemberForm extends FormAbstract
             ])
             ->add('password', 'password', [
                 'label'      => trans('plugins/member::member.form.password'),
-                'label_attr' => ['class' => 'control-label required'],
+                'label_attr' => ['class' => 'control-label'],
                 'attr'       => [
                     'data-counter' => 60,
                 ],
@@ -89,7 +89,7 @@ class MemberForm extends FormAbstract
             ])
             ->add('password_confirmation', 'password', [
                 'label'      => trans('plugins/member::member.form.password_confirmation'),
-                'label_attr' => ['class' => 'control-label required'],
+                'label_attr' => ['class' => 'control-label'],
                 'attr'       => [
                     'data-counter' => 60,
                 ],
