@@ -58,11 +58,14 @@ class MemberTable extends TableAbstract
             ->editColumn('checkbox', function ($item) {
                 return $this->getCheckbox($item->id);
             })
+            ->editColumn('phone', function ($item) {
+                return $item->phone;
+            })
             ->editColumn('created_at', function ($item) {
                 return BaseHelper::formatDate($item->created_at);
             })
             ->editColumn('type', function ($item) {
-                return $item->type == 0 ? 'User thường' : 'User trả phí';
+                return $item->vip_expires_at == null ? 'User thường' : 'User trả phí';
             })
             ->addColumn('operations', function ($item) {
                 return $this->getOperations('member.edit', 'member.destroy', $item);
@@ -80,6 +83,7 @@ class MemberTable extends TableAbstract
             'id',
             'first_name',
             'last_name',
+            'phone',
             'email',
             'created_at',
             'type'
@@ -104,6 +108,10 @@ class MemberTable extends TableAbstract
             ],
             'email'      => [
                 'title' => trans('core/base::tables.email'),
+                'class' => 'text-left',
+            ],
+            'phone'      => [
+                'title' => 'Phone',
                 'class' => 'text-left',
             ],
             'type'      => [
@@ -142,12 +150,17 @@ class MemberTable extends TableAbstract
             'first_name' => [
                 'title'    => trans('plugins/member::member.first_name'),
                 'type'     => 'text',
-                'validate' => 'required|max:120',
+                'validate' => 'max:120',
             ],
             'last_name'  => [
                 'title'    => trans('plugins/member::member.last_name'),
                 'type'     => 'text',
-                'validate' => 'required|max:120',
+                'validate' => 'max:120',
+            ],
+            'phone'  => [
+                'title'    => 'Phone',
+                'type'     => 'text',
+                'validate' => 'max:120',
             ],
             'email'      => [
                 'title'    => trans('core/base::tables.email'),
