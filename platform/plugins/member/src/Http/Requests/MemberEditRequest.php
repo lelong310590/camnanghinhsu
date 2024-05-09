@@ -15,7 +15,7 @@ class MemberEditRequest extends Request
     public function rules()
     {
         $rules = [
-            'phone'      => 'required|max:60|min:6|unique:members,phone,' . $this->route('member'),
+            'phone' => 'required|max:10|min:6|unique:members,phone,' . $this->route('member'),
         ];
 
         if ($this->input('is_change_password') == 1) {
