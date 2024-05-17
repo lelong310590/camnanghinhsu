@@ -77,7 +77,7 @@ class Post extends BaseModel
         'author_type',
         'release_date',
         'effect_date',
-        'view'
+        'views'
     ];
 
     /**
