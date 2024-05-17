@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-lg-12 m-auto">
 {{--                    {!! BaseHelper::clean($post->content) !!}--}}
-                   <p class="text-center">Vui lòng truy cập văn bản tại phiên bản web</p>
+                   <p class="text-center">Vui lòng truy cập văn bản tại phiên bản web : www.camnanghinhsu.com</p>
                     <br>
                     {!! apply_filters(BASE_FILTER_PUBLIC_COMMENT_AREA, theme_option('facebook_comment_enabled_in_post', 'yes') == 'yes' ? Theme::partial('comments') : null) !!}
                 </div>
